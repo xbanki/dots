@@ -16,6 +16,7 @@
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
+    inputs.wsl.nixosModules.wsl
     {
       wsl = {
         wslConf = {
@@ -24,7 +25,7 @@ inputs.nixpkgs.lib.nixosSystem {
           automount.root = "/mnt";
         };
 
-        enabled = true;
+        enable = true;
       };
     }
   ];

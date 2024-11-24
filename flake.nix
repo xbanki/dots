@@ -19,12 +19,20 @@
 {
   description = "dots - Banki (xbanki) Dotfiles";
 
-  inputs = {};
+  inputs = {
+    nixpkgs.url        = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
   outputs = inputs@{ self, nixpkgs, ... }:
   {
     nixosConfigurations = {
       wsl = import ./sys/wsl { inherit inputs; };
     };
-  }
+  };
 }
