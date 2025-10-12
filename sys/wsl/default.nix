@@ -6,18 +6,15 @@
 #   Copyright: Banki <contact@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for detailsk.
-#
-#   Version:   N/A
-#
-#   Since:     N/A
 
-{ inputs, ... }:
+{ version, inputs, ... }:
 
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
-    inputs.wsl.nixosModules.wsl
+    inputs.nixpkgs-wsl.nixosModules.default
     {
+      system.stateVersion = version;
       wsl = {
         wslConf = {
           network.generateResolvConf = false;

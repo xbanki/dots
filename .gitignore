@@ -41,3 +41,11 @@ luac.out
 
 # MacOS metadata
 .DS_Store
+
+# Vim swap files
+*.swp
+*.swo
+*~
+
+# Local config
+local.config.toml
