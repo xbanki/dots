@@ -17,7 +17,6 @@ inputs.nixpkgs.lib.nixosSystem {
       system.stateVersion = version;
       wsl = {
         wslConf = {
-          network.generateResolvConf = false;
           interop.appendWindowsPath = false;
           automount.root = "/mnt";
         };
