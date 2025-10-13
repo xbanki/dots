@@ -10,23 +10,25 @@
 #
 #   Copyright: Banki <contact@xbanki.me>
 #              Licensed under the MIT License.
-#              See LICENSE for detailsk.
+#              See LICENSE for details.
 
 {
   description = "dots - Banki (xbanki) Dotfiles";
 
   inputs = {
-    nixpkgs.url        = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wsl.url    = "github:nix-community/NixOS-WSL";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wsl.url          = "github:nix-community/NixOS-WSL";
+    nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs@{ nixpkgs-wsl, ... }:
+  outputs = inputs:
   let
+    home = import ./home.nix;
     version = "25.05";
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs; };
+      wsl = import ./sys/wsl { inherit version inputs home; };
     };
   };
 }
