@@ -22,13 +22,21 @@
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs:
+  outputs = inputs@{ nixpkgs, ... }:
   let
+    config = nixpkgs.lib.recursiveUpdate
+      (if builtins.pathExists ./config.toml
+       then builtins.fromTOML ./config.toml
+       else {})
+      (if builtins.pathExists ./local.config.toml
+       then builtins.fromTOML ./local.config.toml
+       else {});
+
     home = import ./home.nix;
     version = "25.05";
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs home; };
+      wsl = import ./sys/wsl { inherit version inputs config home; };
     };
   };
 }

@@ -7,7 +7,7 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, inputs, home, ... }:
+{ version, inputs, config, home, ... }:
 
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
@@ -15,7 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
-      home-manager = home { };
+      home-manager = home { inherit config; };
       system.stateVersion = version;
       wsl = {
         wslConf = {
