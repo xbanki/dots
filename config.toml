@@ -1,0 +1,16 @@
+#   Flake Configuration
+#
+# Configuration for system environment output.
+#
+# NOTE: This file should not be directly modified. Instead, it should be
+#       duplicated with the name `local.config.toml`. The local variant is
+#       ignored by version control, and is merged with the default
+#       configuration file with the local variant keys taking precedent.
+#
+#   Copyright: Banki <contact@xbanki.me>
+#              Licensed under the MIT License.
+#              See LICENSE for details.
+
+[user]
+name = "nixos"        # System user name.
+path = "/home/nixos"  # Absolute path for the user's home directory.
