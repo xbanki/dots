@@ -8,7 +8,7 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ ... }:
+{ config, ... }:
 
 {
   useUserPackages = true;
