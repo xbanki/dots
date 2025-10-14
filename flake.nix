@@ -26,10 +26,10 @@
   let
     config = nixpkgs.lib.recursiveUpdate
       (if builtins.pathExists ./config.toml
-       then builtins.fromTOML ./config.toml
+       then builtins.fromTOML (builtins.readFile ./config.toml)
        else {})
       (if builtins.pathExists ./local.config.toml
-       then builtins.fromTOML ./local.config.toml
+       then builtins.fromTOML (builtins.readFile ./local.config.toml)
        else {});
 
     home = import ./home.nix;
