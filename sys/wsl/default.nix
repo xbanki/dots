@@ -15,7 +15,7 @@ inputs.nixpkgs.lib.nixosSystem {
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
-      home-manager = home { inherit config; };
+      home-manager = home { inherit version config; };
       system.stateVersion = version;
       wsl = {
         wslConf = {
