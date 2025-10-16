@@ -8,6 +8,7 @@
 #              See LICENSE for details.
 
 [user]
-group = "users"        # System user group.
-name  = "nixos"        # System user name.
-path  = "/home/nixos"  # Absolute path for the user's home directory.
+groups = ["wheel"]      # List of *extra* groups this user belongs in, with
+                        # the default group being "users".
+name   = "nixos"        # System user name.
+path   = "/home/nixos"  # Absolute path for the user's home directory.
