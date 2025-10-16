@@ -8,13 +8,13 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, config, ... }:
+{ version, config, lib, ... }:
 
 with config; {
   users.${user.name} = {
     programs.home-manager.enable = true;
     home = {
-      homeDirectory = user.path;
+      homeDirectory = lib.mkForce user.path;
       stateVersion = version;
       username = user.name;
     };
