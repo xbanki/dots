@@ -18,8 +18,10 @@ in lib.nixosSystem {
     nixpkgs-home-manager.nixosModules.home-manager
     {
       users = with config; {
-        users.${user.name}.isSystemUser = true;
-        users.${user.name}.group = user.group;
+        users.${user.name} = {
+          extraGroups = user.groups;
+          isNormalUser = true;
+        };
       };
 
       home-manager = home { inherit version config lib; };
