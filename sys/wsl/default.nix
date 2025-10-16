@@ -8,14 +8,21 @@
 #              See LICENSE for details.
 
 { version, inputs, config, home, ... }:
+let
+  lib = inputs.nixpkgs.lib;
 
-inputs.nixpkgs.lib.nixosSystem {
+in lib.nixosSystem {
   system = "x86_64-linux";
   modules = with inputs; [
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
-      home-manager = home { inherit version config; };
+      users = with config; {
+        users.${user.name}.isSystemUser = true;
+        users.${user.name}.group = user.group;
+      };
+
+      home-manager = home { inherit version config lib; };
       system.stateVersion = version;
       wsl = {
         wslConf = {

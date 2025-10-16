@@ -16,21 +16,15 @@
   description = "dots - Banki (xbanki) Dotfiles";
 
   inputs = {
-    nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wsl.url          = "github:nix-community/NixOS-WSL";
-    nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-home-manager.url = "github:nix-community/home-manager";
-  };
+    nixpkgs.url                  = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wsl.url              = "github:nix-community/nixos-wsl/main";
+    nixpkgs-stable.url           = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-home-manager.url     = "github:nix-community/home-manager";
+};
 
   outputs = inputs@{ nixpkgs, ... }:
   let
-    config = nixpkgs.lib.recursiveUpdate
-      (if builtins.pathExists ./config.toml
-       then builtins.fromTOML (builtins.readFile ./config.toml)
-       else {})
-      (if builtins.pathExists ./local.config.toml
-       then builtins.fromTOML (builtins.readFile ./local.config.toml)
-       else {});
+    config = builtins.fromTOML (builtins.readFile ./config.toml);
 
     home = import ./home.nix;
     version = "25.05";
