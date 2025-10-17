@@ -7,24 +7,18 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, inputs, config, home, ... }:
+{ version, inputs, config, ... }:
 let
-  lib = inputs.nixpkgs.lib;
+  home = import ./../../home.nix { inherit version config lib; };
+  lib  = inputs.nixpkgs.lib;
 
 in lib.nixosSystem {
   system = "x86_64-linux";
   modules = with inputs; [
+    home
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
-      users = with config; {
-        users.${user.name} = {
-          extraGroups = user.groups;
-          isNormalUser = true;
-        };
-      };
-
-      home-manager = home { inherit version config lib; };
       system.stateVersion = version;
       wsl = {
         wslConf = {

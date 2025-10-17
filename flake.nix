@@ -14,23 +14,21 @@
 
 {
   description = "dots - Banki (xbanki) Dotfiles";
-
   inputs = {
-    nixpkgs.url                  = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wsl.url              = "github:nix-community/nixos-wsl/main";
-    nixpkgs-stable.url           = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-home-manager.url     = "github:nix-community/home-manager";
-};
+    nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wsl.url          = "github:nix-community/nixos-wsl/main";
+    nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-home-manager.url = "github:nix-community/home-manager";
+  };
 
-  outputs = inputs@{ nixpkgs, ... }:
+  outputs = inputs:
   let
     config = builtins.fromTOML (builtins.readFile ./config.toml);
-
-    home = import ./home.nix;
     version = "25.05";
+
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs config home; };
+      wsl = import ./sys/wsl { inherit version inputs config; };
     };
   };
 }
