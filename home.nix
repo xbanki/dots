@@ -11,15 +11,24 @@
 { version, config, lib, ... }:
 
 with config; {
-  users.${user.name} = {
-    programs.home-manager.enable = true;
-    home = {
-      homeDirectory = lib.mkForce user.path;
-      stateVersion = version;
-      username = user.name;
+  users = with config; {
+    users.${user.name} = {
+      extraGroups = user.groups;
+      isNormalUser = true;
     };
   };
 
-  useUserPackages = true;
-  useGlobalPkgs = true;
+  home-manager = {
+    users.${user.name} = {
+      programs.home-manager.enable = true;
+      home = {
+        homeDirectory = lib.mkForce user.path;
+        stateVersion = version;
+        username = user.name;
+      };
+    };
+
+    useUserPackages = true;
+    useGlobalPkgs = true;
+  };
 }
