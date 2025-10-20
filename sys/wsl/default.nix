@@ -8,9 +8,11 @@
 #              See LICENSE for details.
 
 { version, inputs, config, ... }:
+
 let
-  home = import ./../../home.nix { inherit version config lib; };
-  lib  = inputs.nixpkgs.lib;
+  modules = import ./modules.nix { };
+  home    = import ./../../home.nix { inherit modules version config lib; };
+  lib     = inputs.nixpkgs.lib;
 
 in lib.nixosSystem {
   system = "x86_64-linux";
@@ -26,6 +28,7 @@ in lib.nixosSystem {
           automount.root = "/mnt";
         };
 
+        defaultUser = config.user.name;
         enable = true;
       };
     }
