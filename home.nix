@@ -8,27 +8,30 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, config, lib, ... }:
+{ modules, version, config, lib, ... }:
 
-with config; {
-  users = with config; {
-    users.${user.name} = {
-      extraGroups = user.groups;
-      isNormalUser = true;
-    };
-  };
-
-  home-manager = {
-    users.${user.name} = {
-      programs.home-manager.enable = true;
-      home = {
-        homeDirectory = lib.mkForce user.path;
-        stateVersion = version;
-        username = user.name;
+let
+  base = with config; {
+    users = with config; {
+      users.${user.name} = {
+        extraGroups = user.groups;
+        isNormalUser = true;
       };
     };
 
-    useUserPackages = true;
-    useGlobalPkgs = true;
+    home-manager = {
+      users.${user.name} = {
+        programs.home-manager.enable = true;
+        home = {
+          homeDirectory = lib.mkForce user.path;
+          stateVersion = version;
+          username = user.name;
+        };
+      };
+
+      useUserPackages = true;
+      useGlobalPkgs = true;
+    };
   };
-}
+in
+  lib.recursiveUpdate base modules
