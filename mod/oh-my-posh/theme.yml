@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+#   Oh My Posh Theme
+#
+# Implements my theme Palmer, which as of writing is not released or finalized,
+# as an Oh My Posh theme.
+#
+#   Copyright: Banki <contact@xbanki.me>
+#              Licensed under the MIT License.
+#              See LICENSE for details.
+
+version: 3
+blocks:
+  - type: prompt
+    alignment: left
+    segments:
+      - template: '{{ .UserName }} '
+        type: session
+        style: plain
+      - properties:
+          cache_duration: 24h
+
+        template: 'on {{ .Icon }} {{ .OS }} '
+        style: plain
+        type: os

@@ -6,11 +6,12 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ ... }:
+{ self, ... }:
 
 {
   programs.oh-my-posh = {
     enableZshIntegration = true;
+    configFile = ./theme.yml;
     enable = true;
   };
 }
