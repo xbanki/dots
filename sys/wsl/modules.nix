@@ -6,7 +6,7 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ config, ... }:
+{ config, self, ... }:
 
 with config; {
   home-manager.users.${user.name}.imports = [
