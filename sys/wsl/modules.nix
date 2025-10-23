@@ -10,6 +10,7 @@
 
 with config; {
   home-manager.users.${user.name}.imports = [
+    ./../../mod/oh-my-posh
     ./../../mod/zsh.nix
   ];
 }
