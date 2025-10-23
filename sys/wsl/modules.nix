@@ -6,6 +6,10 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ ... }:
+{ config, ... }:
 
-{ }
+with config; {
+  home-manager.users.${user.name}.imports = [
+    ./../../mod/zsh.nix
+  ];
+}

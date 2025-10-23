@@ -21,14 +21,14 @@
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs:
+  outputs = inputs@{ nixpkgs, ... }:
   let
     config = builtins.fromTOML (builtins.readFile ./config.toml);
     version = "25.05";
 
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs config; };
+      wsl = import ./sys/wsl { inherit nixpkgs version inputs config; };
     };
   };
 }

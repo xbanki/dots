@@ -7,14 +7,13 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, inputs, config, ... }:
+{ nixpkgs, version, inputs, config, ... }:
 
 let
-  modules = import ./modules.nix { };
-  home    = import ./../../home.nix { inherit modules version config lib; };
-  lib     = inputs.nixpkgs.lib;
+  home = import ./../../home.nix { inherit nixpkgs modules version config; };
+  modules = import ./modules.nix { inherit config; };
 
-in lib.nixosSystem {
+in nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = with inputs; [
     home

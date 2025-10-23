@@ -8,14 +8,17 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ modules, version, config, lib, ... }:
+{ nixpkgs, modules, version, config, ... }:
 
 let
+  pkgs = import nixpkgs { system = "x86_64-linux"; };
   base = with config; {
-    users = with config; {
+    programs.zsh.enable = true;
+    users = {
       users.${user.name} = {
         extraGroups = user.groups;
         isNormalUser = true;
+        shell = pkgs.zsh;
       };
     };
 
@@ -23,7 +26,8 @@ let
       users.${user.name} = {
         programs.home-manager.enable = true;
         home = {
-          homeDirectory = lib.mkForce user.path;
+          homeDirectory = nixpkgs.lib.mkForce user.path;
+          shell.enableZshIntegration = true;
           stateVersion = version;
           username = user.name;
         };
@@ -34,4 +38,4 @@ let
     };
   };
 in
-  lib.recursiveUpdate base modules
+  nixpkgs.lib.recursiveUpdate base modules
