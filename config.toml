@@ -8,7 +8,46 @@
 #              See LICENSE for details.
 
 [user]
-groups = ["wheel"]       # List of *extra* groups this user belongs in, with
-                         # the default group being "users".
-name   = "xbanki"        # System user name.
-path   = "/home/xbanki"  # Absolute path for the user's home directory.
+groups = ["wheel"]             # List of *extra* groups this user belongs in, with
+                               # the default group being "users".
+name   = "xbanki"              # System user name.
+path   = "/home/xbanki"        # Absolute path for the user's home directory.
+password = "enc/password.yml"  # File path for the encrypted password hash file.
+
+[git]
+email      = "contact@xbanki.me"  # Default Git user email.
+name       = "xbanki"             # Default Git user name.
+mainbranch = "main"               # Default branch name for newly created
+                                  # local repositories.
+
+# SSH hosts which get defined in `~/.ssh/config` file.
+#
+# Each entry in the hosts table maps 1:1 to options found in `ssh_config`,
+# with the exception of the `identifier` option, which declares the Host block
+# name.
+[[ssh.hosts]]
+identityfile = "~/.ssh/id_rsa_xbanki"
+identifier   = "github.xbanki.me"
+hostname     = "github.com"
+user         = "git"
+
+# SSH keypair paths which get copied to `~/.ssh/`.
+#
+# Keys have permissions automatically set based on the `public` flag. The
+# applied permissions are as follows:
+#
+#  - Private: 0600 - Owner read & write
+#  - Public:  0644 - Owner read, write, public & group read
+#
+# Similarly, the `name` value determines the final written filepath inside of
+# `~/.ssh`. If the `name` key is set to `id_rsa_foo`, the written key file will
+# be `~/.ssh/id_rsa_foo`.
+[[ssh.keys]]
+path   = "enc/id_rsa_xbanki.yml"
+name   = "id_rsa_xbanki"
+public = false
+
+[[ssh.keys]]
+path   = "enc/id_rsa_xbanki.pub.yml"
+name   = "id_rsa_xbanki.pub"
+public = false
