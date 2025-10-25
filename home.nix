@@ -23,6 +23,8 @@ let
 
           path = "${user.path}/.ssh/${key.name}";
           sopsFile = ./${key.path};
+          format = "yaml";
+          key = "data";
 	};
 
         name = key.name;
