@@ -7,13 +7,13 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ nixpkgs, version, inputs, config, self, ... }:
+{ version, inputs, config, ... }:
 
 let
-  home = import ./../../home.nix { inherit nixpkgs modules version config; };
-  modules = import ./modules.nix { inherit config self; };
+  home = import ./../../home.nix { inherit inputs modules version config; };
+  modules = import ./modules.nix { inherit config; };
 
-in nixpkgs.lib.nixosSystem {
+in inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = with inputs; [
     home
@@ -21,6 +21,7 @@ in nixpkgs.lib.nixosSystem {
     nixpkgs-home-manager.nixosModules.home-manager
     {
       system.stateVersion = version;
+
       wsl = {
         wslConf = {
           interop.appendWindowsPath = false;

@@ -8,11 +8,25 @@
 
 { config, ... }:
 
-let
+with config; let
+  hosts = builtins.listToAttrs (
+    builtins.map (
+      host: {
+        value = builtins.removeAttrs host ["identifier"];
+        name = host.identifier;
+      }
+    )
+    (
+      builtins.filter
+        (host: builtins.isString host.identifier)
+	ssh.hosts
+    )
+  );
 
 in
   {
-    programs.zsh = {
+    programs.ssh = {
+      matchBlocks = hosts;
       enable = true;
     };
   }

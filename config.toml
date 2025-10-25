@@ -7,18 +7,37 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-[user]
-groups = ["wheel"]             # List of *extra* groups this user belongs in, with
-                               # the default group being "users".
-name   = "xbanki"              # System user name.
-path   = "/home/xbanki"        # Absolute path for the user's home directory.
-password = "enc/password.yml"  # File path for the encrypted password hash file.
+[user] # Default user configuration, for distributions that don't have one.
 
-[git]
-email      = "contact@xbanki.me"  # Default Git user email.
-name       = "xbanki"             # Default Git user name.
-mainbranch = "main"               # Default branch name for newly created
-                                  # local repositories.
+# List of extra groups applied to the user. Default groups are:
+#
+# - users
+#
+groups = ["wheel"]
+
+# User name. Used as the default user whenever possible (WSL).
+name = "xbanki"
+
+# Absolute path for the user's home directory.
+path = "/home/xbanki"
+
+# Path where SOPS encryption/ decryption keys live.
+sopskey = "/home/xbanki/.config/sops/age/keys.txt/"
+
+
+# File path for encrypted password hash file.
+password = "enc/password.yml"
+
+[git] # Git source control management default options.
+
+# Default Git user email.
+email      = "contact@xbanki.me"
+
+# Default Git user name.
+name       = "xbanki"
+
+# Default Git branch, for newly created local repositories.
+mainbranch = "main"
 
 # SSH hosts which get defined in `~/.ssh/config` file.
 #
@@ -26,8 +45,8 @@ mainbranch = "main"               # Default branch name for newly created
 # with the exception of the `identifier` option, which declares the Host block
 # name.
 [[ssh.hosts]]
-identityfile = "~/.ssh/id_rsa_xbanki"
-identifier   = "github.xbanki.me"
+identityFile = "~/.ssh/id_rsa_xbanki"
+identifier   = "xbanki.github.com"
 hostname     = "github.com"
 user         = "git"
 
@@ -50,4 +69,4 @@ public = false
 [[ssh.keys]]
 path   = "enc/id_rsa_xbanki.pub.yml"
 name   = "id_rsa_xbanki.pub"
-public = false
+public = true

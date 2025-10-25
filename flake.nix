@@ -17,18 +17,19 @@
   inputs = {
     nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wsl.url          = "github:nix-community/nixos-wsl/main";
+    nixpkgs-sops.url         = "github:Mic92/sops-nix";
     nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = inputs@{ nixpkgs, self, ... }:
+  outputs = inputs:
   let
     config = builtins.fromTOML (builtins.readFile ./config.toml);
     version = "25.05";
 
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit nixpkgs version inputs config self; };
+      wsl = import ./sys/wsl { inherit version inputs config; };
     };
   };
 }
