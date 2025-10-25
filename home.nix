@@ -8,10 +8,29 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ nixpkgs, modules, version, config, ... }:
+{ inputs, modules, version, config, ... }:
 
 let
   pkgs = import nixpkgs { system = "x86_64-linux"; };
+  nixpkgs = inputs.nixpkgs;
+  secrets = with config; builtins.listToAttrs (
+    builtins.map (
+      key: {
+        value = {
+	  mode = if key.public
+	    then "0644"
+	    else "0600";
+
+          path = "${user.path}/.ssh/${key.name}";
+          sopsFile = ./${key.path};
+	};
+
+        name = key.name;
+      }
+    )
+    ssh.keys
+  );
+
   base = with config; {
     programs.zsh.enable = true;
     users = {
@@ -23,8 +42,17 @@ let
     };
 
     home-manager = {
+      sharedModules = [
+        inputs.nixpkgs-sops.homeManagerModules.sops
+      ];
+
       users.${user.name} = {
         programs.home-manager.enable = true;
+        sops = {
+          age.keyFile = config.user.sopskey;
+	  secrets = secrets;
+        };
+
         home = {
           homeDirectory = nixpkgs.lib.mkForce user.path;
           shell.enableZshIntegration = true;

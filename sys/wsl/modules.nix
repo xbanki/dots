@@ -6,11 +6,19 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ config, self, ... }:
+{ config, ... }:
 
-with config; {
-  home-manager.users.${user.name}.imports = [
+let
+  args = { inherit config; };
+
+  imports = [
     ./../../mod/oh-my-posh
+    ./../../mod/ssh.nix
     ./../../mod/zsh.nix
   ];
+in
+{
+  home-manager.users.${config.user.name}.imports = builtins.map
+    (module: import module args)
+    imports;
 }
