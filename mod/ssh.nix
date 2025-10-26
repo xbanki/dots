@@ -26,6 +26,7 @@ with config; let
 in
   {
     programs.ssh = {
+      enableDefaultConfig = false;
       matchBlocks = hosts;
       enable = true;
     };
