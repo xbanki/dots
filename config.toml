@@ -31,10 +31,10 @@ password = "enc/password.yml"
 [git] # Git source control management default options.
 
 # Default Git user email.
-email      = "contact@xbanki.me"
+email = "contact@xbanki.me"
 
 # Default Git user name.
-name       = "xbanki"
+name = "xbanki"
 
 # Default Git branch, for newly created local repositories.
 mainbranch = "main"
