@@ -22,7 +22,7 @@ name = "xbanki"
 path = "/home/xbanki"
 
 # Path where SOPS encryption/ decryption keys live.
-sopskey = "/home/xbanki/.config/sops/age/keys.txt/"
+sopskey = "/home/xbanki/.config/sops/age/keys.txt"
 
 
 # File path for encrypted password hash file.
@@ -57,10 +57,13 @@ user         = "git"
 #
 #  - Private: 0600 - Owner read & write
 #  - Public:  0644 - Owner read, write, public & group read
-#
+#:e 
 # Similarly, the `name` value determines the final written filepath inside of
 # `~/.ssh`. If the `name` key is set to `id_rsa_foo`, the written key file will
 # be `~/.ssh/id_rsa_foo`.
+#
+# The `key` field determines what field corresponds to the encrypted data found
+# within the yaml file. If `key` is omitted, `data` is used as default.
 [[ssh.keys]]
 path   = "enc/id_rsa_xbanki.yml"
 name   = "id_rsa_xbanki"
@@ -69,4 +72,5 @@ public = false
 [[ssh.keys]]
 path   = "enc/id_rsa_xbanki.pub.yml"
 name   = "id_rsa_xbanki.pub"
+key    = "data"
 public = true
