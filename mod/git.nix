@@ -14,12 +14,14 @@ with props; {
   ];
 
   programs.git = {
-    extraConfig = {
+    settings = {
       init.defaultBranch = git.mainbranch;
+      user = {
+        email = git.email;
+	name = git.name;
+      };
     };
 
-    userEmail = git.email;
-    userName = git.name;
     enable = true;
   };
 }
