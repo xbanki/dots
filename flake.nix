@@ -24,12 +24,12 @@
 
   outputs = inputs:
   let
-    config = builtins.fromTOML (builtins.readFile ./config.toml);
+    props = builtins.fromTOML (builtins.readFile ./config.toml);
     version = "25.05";
 
   in {
     nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs config; };
+      wsl = import ./sys/wsl { inherit version inputs props; };
     };
   };
 }

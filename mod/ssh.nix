@@ -6,9 +6,9 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ config, ... }:
+{ props, ... }:
 
-with config; let
+with props; let
   hosts = builtins.listToAttrs (
     builtins.map (
       host: {
