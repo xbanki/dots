@@ -6,6 +6,20 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ props, ... }:
+{ props, pkgs, ... }:
 
-{ }
+with props; {
+  home.packages = with pkgs; [
+    git-lfs
+  ];
+
+  programs.git = {
+    extraConfig = {
+      init.defaultBranch = git.mainbranch;
+    };
+
+    userEmail = git.email;
+    userName = git.name;
+    enable = true;
+  };
+}

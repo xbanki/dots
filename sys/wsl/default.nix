@@ -10,8 +10,9 @@
 { version, inputs, props, ... }:
 
 let
+  pkgs = import inputs.nixpkgs { inherit system; };
+  args = { inherit props pkgs; };
   system = "x86_64-linux";
-  args = { inherit props; };
   specialArgs =
     { inherit modules version inputs system props; };
   
@@ -19,6 +20,7 @@ let
     (m: import m args)
     [
       ./../../mod/oh-my-posh
+      ./../../mod/git.nix
       ./../../mod/ssh.nix
       ./../../mod/zsh.nix
     ];
