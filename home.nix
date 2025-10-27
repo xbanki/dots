@@ -8,64 +8,34 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ inputs, modules, version, config, ... }:
+{ modules, version, inputs, system, config, props, ... }:
 
 let
-  pkgs = import nixpkgs { system = "x86_64-linux"; };
-  nixpkgs = inputs.nixpkgs;
-  secrets = with config; builtins.listToAttrs (
-    builtins.map (
-      key: {
-        value = {
-	  mode = if key.public
-	    then "0644"
-	    else "0600";
+  pkgs = import inputs.nixpkgs { inherit system; };
 
-          path = "${user.path}/.ssh/${key.name}";
-          sopsFile = ./${key.path};
-          format = "yaml";
-          key = "data";
-	};
-
-        name = key.name;
-      }
-    )
-    ssh.keys
-  );
-
-  base = with config; {
-    programs.zsh.enable = true;
-    users = {
-      users.${user.name} = {
-        extraGroups = user.groups;
-        isNormalUser = true;
-        shell = pkgs.zsh;
-      };
-    };
-
-    home-manager = {
-      sharedModules = [
-        inputs.nixpkgs-sops.homeManagerModules.sops
-      ];
-
-      users.${user.name} = {
-        programs.home-manager.enable = true;
-        sops = {
-          age.keyFile = config.user.sopskey;
-	  secrets = secrets;
-        };
-
-        home = {
-          homeDirectory = nixpkgs.lib.mkForce user.path;
-          shell.enableZshIntegration = true;
-          stateVersion = version;
-          username = user.name;
-        };
-      };
-
-      useUserPackages = true;
-      useGlobalPkgs = true;
+in with props; {
+  programs.zsh.enable = true;
+  users = {
+    users.${user.name} = {
+      extraGroups = user.groups;
+      isNormalUser = true;
+      shell = pkgs.zsh;
     };
   };
-in
-  nixpkgs.lib.recursiveUpdate base modules
+
+  home-manager = {
+    users.${user.name} = {
+      programs.home-manager.enable = true;
+      imports = modules;
+      home = {
+        homeDirectory = user.path;
+        shell.enableZshIntegration = true;
+        stateVersion = version;
+        username = user.name;
+      };
+    };
+
+    useUserPackages = true;
+    useGlobalPkgs = true;
+  };
+}

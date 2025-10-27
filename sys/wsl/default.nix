@@ -7,20 +7,59 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ version, inputs, config, ... }:
+{ version, inputs, props, ... }:
 
 let
-  home = import ./../../home.nix { inherit inputs modules version config; };
-  modules = import ./modules.nix { inherit config; };
-
-in inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
-  modules = with inputs; [
-    home
+  args = { inherit props; };
+  specialArgs =
+    { inherit modules version inputs system props; };
+  
+  modules = builtins.map
+    (m: import m args)
+    [
+      ./../../mod/oh-my-posh
+      ./../../mod/ssh.nix
+      ./../../mod/zsh.nix
+    ];
+
+  secrets = with props; builtins.listToAttrs (
+    builtins.map (
+      key: {
+        value = {
+	  mode = if key.public
+	    then "0644"
+	    else "0600";
+
+          path = "${user.path}/.ssh/${key.name}";
+          sopsFile = ./../../${key.path};
+	  owner = user.name;
+          format = "yaml";
+          key = "data";
+	};
+
+        name = key.name;
+      }
+    )
+
+    ssh.keys
+  );
+
+in with inputs; nixpkgs.lib.nixosSystem {
+  system = system; 
+  specialArgs = specialArgs;
+  modules = with props; [
+    ./../../home.nix
+    nixpkgs-sops.nixosModules.sops
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
       system.stateVersion = version;
+      sops = {
+        age.keyFile = user.sopskey;
+	defaultSopsFormat = "yaml";
+        secrets = secrets;
+      };
 
       wsl = {
         wslConf = {
@@ -28,7 +67,7 @@ in inputs.nixpkgs.lib.nixosSystem {
           automount.root = "/mnt";
         };
 
-        defaultUser = config.user.name;
+        defaultUser = user.name;
         enable = true;
       };
     }
