@@ -26,25 +26,40 @@ let
     ];
 
   secrets = with props; builtins.listToAttrs (
-    builtins.map (
-      key: {
-        value = {
-	  mode = if key.public
-	    then "0644"
-	    else "0600";
+    builtins.concatLists (
+      [
+        [
+          {
+	    value = {
+	      sopsFile = ./../../${user.password};
+	      neededForUsers = true;
+	      key = "data";
+	    };
 
-          path = "${user.path}/.ssh/${key.name}";
-          sopsFile = ./../../${key.path};
-	  owner = user.name;
-          format = "yaml";
-          key = "data";
-	};
+            name = "password";
+          }
+        ]
 
-        name = key.name;
-      }
+        (builtins.map (
+          key: {
+            value = {
+	      mode = if key.public
+	        then "0644"
+	        else "0600";
+
+              path = "${user.path}/.ssh/${key.name}";
+              sopsFile = ./../../${key.path};
+	      owner = user.name;
+              key = "data";
+	    };
+
+            name = key.name;
+          }
+        )
+
+        ssh.keys)
+      ]
     )
-
-    ssh.keys
   );
 
 in with inputs; nixpkgs.lib.nixosSystem {
