@@ -20,6 +20,7 @@ let
     (m: import m args)
     [
       ./../../mod/oh-my-posh
+      ./../../mod/direnv.nix
       ./../../mod/git.nix
       ./../../mod/ssh.nix
       ./../../mod/zsh.nix
