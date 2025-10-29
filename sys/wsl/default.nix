@@ -24,6 +24,7 @@ let
       ./../../mod/git.nix
       ./../../mod/ssh.nix
       ./../../mod/zsh.nix
+      ./../../mod/neovim
     ];
 
   secrets = with props; builtins.listToAttrs (

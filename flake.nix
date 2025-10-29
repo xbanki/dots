@@ -18,6 +18,7 @@
     nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wsl.url          = "github:nix-community/nixos-wsl/main";
     nixpkgs-sops.url         = "github:Mic92/sops-nix";
+    nixpkgs-nixvim.url       = "github:nix-community/nixvim";
     nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
   };

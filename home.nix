@@ -26,11 +26,15 @@ in with props; {
 
   home-manager = {
     users.${user.name} = {
+      imports = builtins.concatLists [
+        [ inputs.nixpkgs-nixvim.homeManagerModules.nixvim ]
+        modules
+      ];
+
       programs.home-manager.enable = true;
-      imports = modules;
       home = {
-        homeDirectory = user.path;
         shell.enableZshIntegration = true;
+        homeDirectory = user.path;
         stateVersion = version;
         username = user.name;
       };
