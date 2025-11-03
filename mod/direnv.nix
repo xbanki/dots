@@ -12,11 +12,15 @@
 {
   programs.direnv = with props; {
     config = {
+      global = {
+        disable_stdin = true;
+	hide_env_diff = true;
+	log_filter = "^$";
+      };
+
       whitelist.prefix = [
         "${user.path}/Workspace"
         "${user.path}/workspace"
-	"~/Workspace"
-	"~/workspace"
       ];
     };
 
