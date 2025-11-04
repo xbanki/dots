@@ -39,7 +39,7 @@ blocks:
         properties:
           style: agnoster_full
 
-      - template: 'at  git:({{ if (.UpstreamIcon) }}{{ .UpstreamIcon }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}*{{ end }}){{ if or (gt .Ahead 0) (gt .Behind 0) }} (󰁝 .Ahead 󰁅 .Behind){{ end }} '
+      - template: 'at  git:({{ if (.UpstreamIcon) }}{{ .UpstreamIcon }}{{ end }}{{ .HEAD }}{{ if or .Working.Changed .Staging.Changed }}*{{ end }}){{ if or (gt .Ahead 0) (gt .Behind 0) }} (󰁝 {{ .Ahead }} 󰁅 {{ .Behind }}){{ end }} '
         style: plain
         type: git
         properties:
