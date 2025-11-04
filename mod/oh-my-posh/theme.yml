@@ -14,12 +14,38 @@ blocks:
   - type: prompt
     alignment: left
     segments:
-      - template: '{{ .UserName }} '
+      - template: '⚡{{ .UserName }} '
         type: session
         style: plain
       - properties:
           cache_duration: 24h
 
-        template: 'on {{ .Icon }} {{ .OS }} '
+        template: 'on {{ .Icon }} {{ .OS }}:'
         style: plain
         type: os
+      - template: '({{ .Name }}) '
+        style: plain
+        type: shell
+        properties:
+          cache_duration: 24h
+          strategy: session
+
+      - template: 'as 󱄅 nix-shell-{{ .Type }} '
+        type: nix-shell
+        style: plain
+      - template: 'in  {{ .Path }} '
+        style: plain
+        type: path
+        properties:
+          style: agnoster_full
+
+      - template: 'at  git:({{ if (.UpstreamIcon) }}{{ .UpstreamIcon }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}*{{ end }}){{ if or (gt .Ahead 0) (gt .Behind 0) }} (󰁝 .Ahead 󰁅 .Behind){{ end }} '
+        style: plain
+        type: git
+        properties:
+          fetch_upstream_icon: true
+          fetch_push_status: true
+          fetch_bare_info: true
+          fetch_status: true
+          branch_icon: ' '
+
