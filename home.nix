@@ -27,7 +27,7 @@ in with props; {
   home-manager = {
     users.${user.name} = {
       imports = builtins.concatLists [
-        [ inputs.nixpkgs-nixvim.homeManagerModules.nixvim ]
+        [ inputs.nixpkgs-nixvim.homeModules.nixvim ]
         modules
       ];
 
