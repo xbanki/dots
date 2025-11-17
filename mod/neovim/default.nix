@@ -14,6 +14,7 @@
     vimdiffAlias = true;
     enable = true;
     imports = [
+      ./indent-blankline.nix
       ./telescope.nix
       ./keymaps.nix
     ];
