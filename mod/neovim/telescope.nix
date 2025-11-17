@@ -44,6 +44,7 @@
 	    mode = stat;
 	  };
 
+	  prompt_prefix = " ";
 	  hijack_netrw = true;
 	  git_status = false;
 	  theme = "dropdown";
