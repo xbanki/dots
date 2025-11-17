@@ -15,6 +15,7 @@
     enable = true;
     imports = [
       ./indent-blankline.nix
+      ./treesitter.nix
       ./telescope.nix
       ./keymaps.nix
     ];
