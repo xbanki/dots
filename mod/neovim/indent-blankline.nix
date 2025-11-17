@@ -11,7 +11,11 @@
 
 {
   plugins.indent-blankline = {
-    settings.indent.char = "▏";
+    settings = {
+      scope.enabled = false;
+      indent.char = "▏";
+    };
+
     enable = true;
   };
 }
