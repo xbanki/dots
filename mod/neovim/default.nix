@@ -6,7 +6,7 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.nixvim = {
@@ -18,11 +18,10 @@
       ./keymaps.nix
     ];
 
-    extraPackages = with pkgs; [
-      ripgrep
-    ];
-
+    # Enables plugins which do not require explicit configuration, or whose
+    # default configuration fits the configuration needs.
     plugins = {
+      nvim-autopairs.enable = true;
       web-devicons.enable = true;
     };
   };
