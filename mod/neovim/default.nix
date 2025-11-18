@@ -19,6 +19,7 @@
       ./indent-blankline.nix
       ./treesitter.nix
       ./telescope.nix
+      ./gitsigns.nix
       ./keymaps.nix
       ./opts.nix
     ];
