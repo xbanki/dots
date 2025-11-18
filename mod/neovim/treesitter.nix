@@ -26,7 +26,7 @@
 
     treesitter-textobjects = {
       enable = true;
-      select = {
+      settings.select = {
         lookahead = true;
         enable = true;
       };
