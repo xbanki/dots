@@ -16,7 +16,7 @@
           enable = true;
         };
 
-        grammarPacswapkages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
         textobjects.enable = true;
         highlight.enable = true;
         nixvimInjections = true;
