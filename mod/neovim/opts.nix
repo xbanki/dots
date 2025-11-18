@@ -1,6 +1,6 @@
-#   Neovim configuration
+#   Editor Options
 #
-# Configures Neovim through Nixvim.
+# Base editor settings.
 #
 #   Copyright: Banki <contact@xbanki.me>
 #              Licensed under the MIT License.
