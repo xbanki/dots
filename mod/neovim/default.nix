@@ -12,12 +12,15 @@
   programs.nixvim = {
     defaultEditor = true;
     vimdiffAlias = true;
+    vimAlias = true;
+    viAlias = true;
     enable = true;
     imports = [
       ./indent-blankline.nix
       ./treesitter.nix
       ./telescope.nix
       ./keymaps.nix
+      ./opts.nix
     ];
 
     # Enables plugins which do not require explicit configuration, or whose
