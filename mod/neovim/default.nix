@@ -21,6 +21,7 @@
       ./telescope.nix
       ./gitsigns.nix
       ./keymaps.nix
+      ./lualine.nix
       ./opts.nix
     ];
 
