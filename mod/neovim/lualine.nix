@@ -22,6 +22,10 @@
       M.stylized_ftype_names = {
         javascript = "JavaScript",
         typescript = "TypeScript",
+        jsonc = "JSONC",
+        yaml = "YAML",
+        toml = "TOML",
+        json = "JSON",
       }
 
       function M.clamp(opts)
