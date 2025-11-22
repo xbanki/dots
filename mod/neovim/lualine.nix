@@ -95,7 +95,7 @@
                   for _, client in ipairs(clients) do
                     if type(client.name) == 'string' and
                        string.match(client.name, "^%-?[%d%.]+%d$") == nil then
-                      if lsp_list:len() <= 1 then
+                      if lsp_list:len() >= 1 then
                         lsp_list = lsp_list .. ", " .. client.name
                       else
                         lsp_list = client.name
