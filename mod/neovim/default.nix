@@ -17,6 +17,7 @@
     enable = true;
     imports = [
       ./indent-blankline.nix
+      ./diagnostics.nix
       ./treesitter.nix
       ./telescope.nix
       ./gitsigns.nix

@@ -32,16 +32,20 @@
       key    = "<leader>fb";
     }
     {
-      action = lib.nixvim.utils.mkRaw ''
+      action = lib.nixvim.mkRaw ''
         function()
-	  require("telescope").extensions.file_browser.file_browser {
-	    select_buffer = true,
-	    path = "%:p:h",
-	  }
-	end
+	        require("telescope").extensions.file_browser.file_browser {
+	          select_buffer = true,
+	          path = "%:p:h",
+	        }
+	      end
       '';
 
       key = "<leader>fx";
+    }
+    {
+      action = lib.nixvim.mkRaw "require('tiny-inline-diagnostic').toggle";
+      key    = "<leader>td";
     }
   ];
 }
