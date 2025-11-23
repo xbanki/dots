@@ -44,7 +44,7 @@
             mode = stat;
           };
 
-          prompt_prefix = " ";
+          prompt_prefix = " ";
           hijack_netrw = true;
           git_status = false;
           theme = "dropdown";
@@ -108,7 +108,7 @@
         selection_caret = " ";
         results_title = false;
         prompt_prefix = " ";
-        multi_icon = "󰄾 ";
+        multi_icon = " 󰄾";
       };
     };
   };
