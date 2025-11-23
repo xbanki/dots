@@ -23,6 +23,7 @@
       ./keymaps.nix
       ./lualine.nix
       ./opts.nix
+      ./lsp.nix
     ];
 
     # Enables plugins which do not require explicit configuration, or whose
