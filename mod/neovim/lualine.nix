@@ -122,7 +122,7 @@
               end
             '';
             separator = "";
-            icon = " ";
+            icon = " ";
           })
 
           (mkAttrs ["%="] // {
@@ -139,7 +139,7 @@
           (mkAttrs ["filename"] // {
             symbols = {
               readonly = "(read-only)";
-              modified = "*";
+              modified = "";
             };
 
             cond = mkRaw ''
@@ -165,8 +165,8 @@
 
           (mkAttrs ["diagnostics"] // {
             symbols = {
-              error = " ";
-              warn = " ";
+              error = " ";
+              warn = " ";
             };
 
             sources = [
