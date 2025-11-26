@@ -23,6 +23,7 @@
       ./gitsigns.nix
       ./keymaps.nix
       ./lualine.nix
+      ./blink.nix
       ./opts.nix
       ./lsp.nix
     ];
