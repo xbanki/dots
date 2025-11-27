@@ -77,10 +77,9 @@
 
     # Selection characters
     listchars = {
-      leadmultispace = " ";
-      multispace = " ";
-      tab = " » ";
-      nbsp = "␣";
+      trail = "·";
+      nbsp  = "␣";
+      tab = "» ";
     };
 
     # Fill characters
