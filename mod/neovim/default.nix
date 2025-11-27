@@ -24,6 +24,7 @@
       ./keymaps.nix
       ./lualine.nix
       ./blink.nix
+      ./lint.nix
       ./opts.nix
       ./lsp.nix
     ];
