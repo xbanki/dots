@@ -20,6 +20,7 @@
       ./diagnostics.nix
       ./treesitter.nix
       ./telescope.nix
+      ./markview.nix
       ./gitsigns.nix
       ./keymaps.nix
       ./conform.nix

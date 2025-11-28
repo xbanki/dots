@@ -47,5 +47,16 @@
       action = lib.nixvim.mkRaw "require('tiny-inline-diagnostic').toggle";
       key = "<leader>td";
     }
+    {
+      action = lib.nixvim.mkRaw ''
+        function()
+          if vim.bo.filetype == "markdown" or vim.bo.filetype == "mdx" then
+            vim.cmd("Markview splitToggle")
+          end
+        end
+      '';
+
+      key = "<leader>tm";
+    }
   ];
 }
