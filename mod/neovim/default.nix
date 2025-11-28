@@ -22,6 +22,7 @@
       ./telescope.nix
       ./gitsigns.nix
       ./keymaps.nix
+      ./conform.nix
       ./lualine.nix
       ./blink.nix
       ./lint.nix
