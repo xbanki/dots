@@ -6,13 +6,11 @@
 
 <summary>Windows Subsystem for Linux</summary>
 
-> [!NOTE]
-> If build-time decryption via `sops-nix` is required, the encryption keys must be present at the configured path **before** the build starts, otherwise it will fail.
+> [!NOTE] If build-time decryption via `sops-nix` is required, the encryption keys must be present at the configured path **before** the build starts, otherwise it will fail.
 
 ## Pre-existing Installation
 
-> [!CAUTION]
-> Unless the active login username matches the value specified in `config.toml`, [this guide](#differing-usernames) should be followed instead.
+> [!CAUTION] Unless the active login username matches the value specified in `config.toml`, [this guide](#differing-usernames) should be followed instead.
 
  - In a Nix WSL environment, run the following command:
 
