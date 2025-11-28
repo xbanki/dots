@@ -20,29 +20,31 @@
       file-browser = {
         enable = true;
         settings = {
-          display_stat = let
-            stat = {
-              display = lib.nixvim.mkRaw "function(_) return '' end";
-              width = 0;
-            };
+          display_stat =
+            let
+              stat = {
+                display = lib.nixvim.mkRaw "function(_) return '' end";
+                width = 0;
+              };
 
-          in {
-            size = {
-              display = lib.nixvim.mkRaw ''
-                function(opts)
-                  if opts.stat.size ~= 0 then
-                    local m = "telescope._extensions.file_browser.fs_stat"
-                    return require(m).size.display(opts)
+            in
+            {
+              size = {
+                display = lib.nixvim.mkRaw ''
+                  function(opts)
+                    if opts.stat.size ~= 0 then
+                      local m = "telescope._extensions.file_browser.fs_stat"
+                      return require(m).size.display(opts)
+                    end
+
+                    return nil
                   end
+                '';
+              };
 
-                  return nil
-                end
-              '';
+              date = stat;
+              mode = stat;
             };
-
-            date = stat;
-            mode = stat;
-          };
 
           prompt_prefix = " ";
           hijack_netrw = true;
@@ -100,7 +102,7 @@
           "%.git"
         ];
 
-        path_display = lib.nixvim.listToUnkeyedAttrs ["truncate"];
+        path_display = lib.nixvim.listToUnkeyedAttrs [ "truncate" ];
         layout_config.scroll_speed = 2;
         sorting_strategy = "ascending";
         dynamic_preview_title = true;

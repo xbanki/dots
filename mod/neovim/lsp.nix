@@ -23,31 +23,31 @@
     keymaps = [
       {
         lspBufAction = "definition";
-        key          = "gd";
+        key = "gd";
       }
       {
         lspBufAction = "declaration";
-        key          = "gD";
+        key = "gD";
       }
       {
         lspBufAction = "references";
-        key          = "gr";
+        key = "gr";
       }
       {
         lspBufAction = "implementation";
-        key          = "gi";
+        key = "gi";
       }
       {
         lspBufAction = "type_definition";
-        key          = "gt";
+        key = "gt";
       }
       {
         lspBufAction = "rename";
-        key          = "rr";
+        key = "rr";
       }
       {
         lspBufAction = "hover";
-        key          = "<leader><space>";
+        key = "<leader><space>";
       }
     ];
 
@@ -104,38 +104,40 @@
             "vue"
           ];
 
-          settings = let
-            hints = {
-              propertyDeclarationTypes.enabled = true;
-              functionLikeReturnTypes.enabled = true;
-              enumMemberValues.enabled = true;
-              parameterNames.enabled = "all";
-              parameterTypes.enabled = true;
-              variableTypes.enabled = true;
+          settings =
+            let
+              hints = {
+                propertyDeclarationTypes.enabled = true;
+                functionLikeReturnTypes.enabled = true;
+                enumMemberValues.enabled = true;
+                parameterNames.enabled = "all";
+                parameterTypes.enabled = true;
+                variableTypes.enabled = true;
+              };
+
+            in
+            {
+              javascript.inlayHints = hints;
+              typescript = {
+                tsserver.useSyntaxServer = false;
+                inlayHints = hints;
+              };
+
+              vtsls.tsserver.globalPlugins = [
+                {
+                  location = lib.strings.concatStrings [
+                    "${pkgs.vue-language-server}/"
+                    "lib/language-tools/packages/"
+                    "language-server/node_modules/"
+                    "@vue/typescript-plugin"
+                  ];
+
+                  name = "@vue/typescript-plugin";
+                  configNamespace = "typescript";
+                  languages = [ "vue" ];
+                }
+              ];
             };
-
-          in {
-            javascript.inlayHints = hints;
-            typescript = {
-              tsserver.useSyntaxServer = false;
-              inlayHints = hints;
-            };
-
-            vtsls.tsserver.globalPlugins = [
-              {
-                location = lib.strings.concatStrings [
-                  "${pkgs.vue-language-server}/"
-                  "lib/language-tools/packages/"
-                  "language-server/node_modules/"
-                  "@vue/typescript-plugin"
-                ];
-
-                name = "@vue/typescript-plugin";
-                configNamespace = "typescript";
-                languages = ["vue"];
-              }
-            ];
-          };
         };
       };
 
@@ -146,7 +148,6 @@
           installRustc = true;
         };
       };
-
 
       vue_ls = {
         enable = true;

@@ -13,39 +13,39 @@
   keymaps = [
     {
       action = "<cmd>Telescope find_files<CR>";
-      key    = "<leader>ff";
+      key = "<leader>ff";
     }
     {
       action = "<cmd>Telescope grep_string<CR>";
-      key    = "<leader>fw";
+      key = "<leader>fw";
     }
     {
       action = "<cmd>Telescope live_grep<CR>";
-      key    = "<leader>fg";
+      key = "<leader>fg";
     }
     {
       action = "<cmd>Telescope help_tags<CR>";
-      key    = "<leader>fh";
+      key = "<leader>fh";
     }
     {
       action = "<cmd>Telescope current_buffer_fuzzy_find<CR>";
-      key    = "<leader>fb";
+      key = "<leader>fb";
     }
     {
       action = lib.nixvim.mkRaw ''
-        function()
-	        require("telescope").extensions.file_browser.file_browser {
-	          select_buffer = true,
-	          path = "%:p:h",
-	        }
-	      end
+                function()
+        	        require("telescope").extensions.file_browser.file_browser {
+        	          select_buffer = true,
+        	          path = "%:p:h",
+        	        }
+        	      end
       '';
 
       key = "<leader>fx";
     }
     {
       action = lib.nixvim.mkRaw "require('tiny-inline-diagnostic').toggle";
-      key    = "<leader>td";
+      key = "<leader>td";
     }
   ];
 }

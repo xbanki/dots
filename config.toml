@@ -46,9 +46,9 @@ mainbranch = "main"
 # name.
 [[ssh.hosts]]
 identityFile = "~/.ssh/id_rsa_xbanki"
-identifier   = "xbanki.github.com"
-hostname     = "github.com"
-user         = "git"
+identifier = "xbanki.github.com"
+hostname = "github.com"
+user = "git"
 
 # SSH keypair paths which get copied to `~/.ssh/`.
 #
@@ -65,12 +65,12 @@ user         = "git"
 # The `key` field determines what field corresponds to the encrypted data found
 # within the yaml file. If `key` is omitted, `data` is used as default.
 [[ssh.keys]]
-path   = "enc/id_rsa_xbanki.yml"
-name   = "id_rsa_xbanki"
+path = "enc/id_rsa_xbanki.yml"
+name = "id_rsa_xbanki"
 public = false
 
 [[ssh.keys]]
-path   = "enc/id_rsa_xbanki.pub.yml"
-name   = "id_rsa_xbanki.pub"
-key    = "data"
+path = "enc/id_rsa_xbanki.pub.yml"
+name = "id_rsa_xbanki.pub"
+key = "data"
 public = true

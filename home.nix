@@ -8,12 +8,22 @@
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
-{ modules, version, inputs, system, config, props, ... }:
+{
+  modules,
+  version,
+  inputs,
+  system,
+  config,
+  props,
+  ...
+}:
 
 let
   pkgs = import inputs.nixpkgs { inherit system; };
 
-in with props; {
+in
+with props;
+{
   programs.zsh.enable = true;
   users = {
     users.${user.name} = {

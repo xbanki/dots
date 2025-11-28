@@ -26,7 +26,7 @@
             "snippets"
             "ripgrep"
           ];
-          
+
           providers.ripgrep = {
             module = "blink-ripgrep";
             score_offset = 1;
@@ -67,25 +67,30 @@
             border = "solid";
             draw = {
               gap = 1;
-              treesitter = ["lsp"];
-              columns = let
-                mkAttrs = lib.nixvim.listToUnkeyedAttrs;
+              treesitter = [ "lsp" ];
+              columns =
+                let
+                  mkAttrs = lib.nixvim.listToUnkeyedAttrs;
 
-              in [
-                (mkAttrs ["kind_icon"])
-                (mkAttrs ["label"] // {
-                  width.fill = true;
-                })
+                in
+                [
+                  (mkAttrs [ "kind_icon" ])
+                  (
+                    mkAttrs [ "label" ]
+                    // {
+                      width.fill = true;
+                    }
+                  )
 
-                (mkAttrs ["label_description"])
-              ];
+                  (mkAttrs [ "label_description" ])
+                ];
             };
           };
         };
 
         appearance.kind_icons = {
           TypeParameter = "";
-          Constructor = "󰊕"; 
+          Constructor = "󰊕";
           EnumMember = "";
           Interface = "󱡠";
           Reference = "";
