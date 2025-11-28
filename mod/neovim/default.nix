@@ -30,6 +30,9 @@
       ./lsp.nix
     ];
 
+    # FIXME(xbanki): Temporarily use Tokyo Night as our color scheme.
+    colorschemes.tokyonight.enable = true;
+
     # Enables plugins which do not require explicit configuration, or whose
     # default configuration fits the configuration needs.
     plugins = {
