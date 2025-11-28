@@ -14,8 +14,8 @@
     config = {
       global = {
         disable_stdin = true;
-	hide_env_diff = true;
-	log_filter = "^$";
+        hide_env_diff = true;
+        log_filter = "^$";
       };
 
       whitelist.prefix = [

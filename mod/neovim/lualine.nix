@@ -61,184 +61,222 @@
         ];
       };
 
-      sections = let
-        mkAttrs = lib.nixvim.listToUnkeyedAttrs;
-        mkRaw = lib.nixvim.mkRaw;
+      sections =
+        let
+          mkAttrs = lib.nixvim.listToUnkeyedAttrs;
+          mkRaw = lib.nixvim.mkRaw;
 
-      in {
-        lualine_a = [
-          (mkAttrs ["mode"] // {
-            cond = mkRaw "function() return not M.disable() end";
-            fmt = mkRaw "string.upper";
-          })
-        ];
+        in
+        {
+          lualine_a = [
+            (
+              mkAttrs [ "mode" ]
+              // {
+                cond = mkRaw "function() return not M.disable() end";
+                fmt = mkRaw "string.upper";
+              }
+            )
+          ];
 
-        lualine_b = [
-          (mkAttrs ["branch"] // {
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 50, }) and not M.disable()
-              end
-            '';
-          })
-        ];
+          lualine_b = [
+            (
+              mkAttrs [ "branch" ]
+              // {
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 50, }) and not M.disable()
+                  end
+                '';
+              }
+            )
+          ];
 
-        lualine_c = [
-          (mkAttrs [
-            (mkRaw ''
-              function()
-                local clients = vim.lsp.get_clients({
-                  bufnr = vim.fn.bufnr("%"),
-                })
-                if next(clients) ~= nil then
-                  local lsp_list = ""
-                  for _, client in ipairs(clients) do
-                    if type(client.name) == 'string' and
-                       string.match(client.name, "^%-?[%d%.]+%d$") == nil then
-                      if lsp_list:len() >= 1 then
-                        lsp_list = lsp_list .. ", " .. client.name
-                      else
-                        lsp_list = client.name
+          lualine_c = [
+            (
+              mkAttrs [
+                (
+                  mkRaw ''
+                    function()
+                      local clients = vim.lsp.get_clients({
+                        bufnr = vim.fn.bufnr("%"),
+                      })
+                      if next(clients) ~= nil then
+                        local lsp_list = ""
+                        for _, client in ipairs(clients) do
+                          if type(client.name) == 'string' and
+                             string.match(client.name, "^%-?[%d%.]+%d$") == nil then
+                            if lsp_list:len() >= 1 then
+                              lsp_list = lsp_list .. ", " .. client.name
+                            else
+                              lsp_list = client.name
+                            end
+                          end
+                        end
+
+                        return lsp_list
                       end
+
+                      return "No LSP"
                     end
+                  ''
+                  // {
+                    cond = mkRaw ''
+                      function()
+                        return M.clamp({ min = 85, }) and not M.disable()
+                      end
+                    '';
+                  }
+                )
+              ]
+              // {
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 85, }) and not M.disable()
                   end
+                '';
+                separator = "";
+                icon = " ";
+              }
+            )
 
-                  return lsp_list
-                end
-                
-                return "No LSP"
-              end
-            '' // {
-              cond = mkRaw ''
-                function()
-                  return M.clamp({ min = 85, }) and not M.disable()
-                end
-              '';
-            })
-          ] // {
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 85, }) and not M.disable()
-              end
-            '';
-            separator = "";
-            icon = " ";
-          })
-
-          (mkAttrs ["%="] // {
-            separator = "";
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 50, max = 84, }) and not M.disable()
-              end
-            '';
-          })
-        ]; 
-
-        lualine_x = [
-          (mkAttrs ["filename"] // {
-            symbols = {
-              readonly = "(read-only)";
-              modified = "";
-            };
-
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 64, }) and not M.disable()
-              end
-            '';
-
-            newfile_status = false;
-            shorting_target = 32;
-            filestatus = true;
-            separator = "";
-          })
-
-          (mkAttrs ["%="] // {
-            separator = "";
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 64, }) and not M.disable()
-              end
-            '';
-          })
-
-          (mkAttrs ["diagnostics"] // {
-            symbols = {
-              error = " ";
-              warn = " ";
-            };
-
-            sources = [
-              "nvim_workspace_diagnostic"
-              "nvim_diagnostic"
-              "nvim_lsp"
-            ];
-
-            sections = [
-              "error"
-              "warn"
-            ];
-
-            update_in_insert = true;
-            always_visible = true;
-            colored = false;
-            separator = "";
-          })
-
-          (mkAttrs ["%="] // {
-            separator = "";
-            cond = mkRaw ''
-              function()
-                return M.clamp({ max = 63, }) and not M.disable()
-              end
-            '';
-          })
-        ];
-
-        lualine_y = [ 
-          (mkAttrs ["filetype"] // {
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 50, max = 84, }) and not M.disable()
-              end
-            '';
-
-            icon_only = true;
-            padding = 2;
-          })
-
-          (mkAttrs ["filetype"] // {
-            cond = mkRaw ''
-              function()
-                return M.clamp({ min = 85, }) and not M.disable()
-              end
-            '';
-
-            fmt = mkRaw ''
-              function(ftype)
-                if type(ftype) == "string" then
-                  if not M.stylized_ftype_names[ftype] then
-                    return ftype:gsub("^%l", string.upper)
+            (
+              mkAttrs [ "%=" ]
+              // {
+                separator = "";
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 50, max = 84, }) and not M.disable()
                   end
+                '';
+              }
+            )
+          ];
 
-                  return M.stylized_ftype_names[ftype]
-                end
+          lualine_x = [
+            (
+              mkAttrs [ "filename" ]
+              // {
+                symbols = {
+                  readonly = "(read-only)";
+                  modified = "";
+                };
 
-                return ftype
-              end
-            '';
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 64, }) and not M.disable()
+                  end
+                '';
 
-            separator = "";
-          })
-        ];
+                newfile_status = false;
+                shorting_target = 32;
+                filestatus = true;
+                separator = "";
+              }
+            )
 
-        lualine_z = [
-          (mkAttrs ["location"] // {
-            cond = mkRaw "function() return not M.disable() end";
-          })
-        ];
-      };
+            (
+              mkAttrs [ "%=" ]
+              // {
+                separator = "";
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 64, }) and not M.disable()
+                  end
+                '';
+              }
+            )
+
+            (
+              mkAttrs [ "diagnostics" ]
+              // {
+                symbols = {
+                  error = " ";
+                  warn = " ";
+                };
+
+                sources = [
+                  "nvim_workspace_diagnostic"
+                  "nvim_diagnostic"
+                  "nvim_lsp"
+                ];
+
+                sections = [
+                  "error"
+                  "warn"
+                ];
+
+                update_in_insert = true;
+                always_visible = true;
+                colored = false;
+                separator = "";
+              }
+            )
+
+            (
+              mkAttrs [ "%=" ]
+              // {
+                separator = "";
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ max = 63, }) and not M.disable()
+                  end
+                '';
+              }
+            )
+          ];
+
+          lualine_y = [
+            (
+              mkAttrs [ "filetype" ]
+              // {
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 50, max = 84, }) and not M.disable()
+                  end
+                '';
+
+                icon_only = true;
+                padding = 2;
+              }
+            )
+
+            (
+              mkAttrs [ "filetype" ]
+              // {
+                cond = mkRaw ''
+                  function()
+                    return M.clamp({ min = 85, }) and not M.disable()
+                  end
+                '';
+
+                fmt = mkRaw ''
+                  function(ftype)
+                    if type(ftype) == "string" then
+                      if not M.stylized_ftype_names[ftype] then
+                        return ftype:gsub("^%l", string.upper)
+                      end
+
+                      return M.stylized_ftype_names[ftype]
+                    end
+
+                    return ftype
+                  end
+                '';
+
+                separator = "";
+              }
+            )
+          ];
+
+          lualine_z = [
+            (
+              mkAttrs [ "location" ]
+              // {
+                cond = mkRaw "function() return not M.disable() end";
+              }
+            )
+          ];
+        };
     };
   };
 }

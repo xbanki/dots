@@ -9,21 +9,23 @@
 { ... }:
 
 {
-  files = let
-    stabs = {
-      softtabstop = 2;
-      shiftwidth = 2;
-      tabstop = 2;
-    };
+  files =
+    let
+      stabs = {
+        softtabstop = 2;
+        shiftwidth = 2;
+        tabstop = 2;
+      };
 
-  in {
-    "ftplugin/nix.lua".opts = stabs;
-    "ftplugin/lua.lua".opts = stabs;
-    "ftplugin/go.lua".opts = {
-      expandtab = false;
-      softtabstop = 0;
+    in
+    {
+      "ftplugin/nix.lua".opts = stabs;
+      "ftplugin/lua.lua".opts = stabs;
+      "ftplugin/go.lua".opts = {
+        expandtab = false;
+        softtabstop = 0;
+      };
     };
-  };
 
   opts = {
     # Status line
@@ -78,7 +80,7 @@
     # Selection characters
     listchars = {
       trail = "·";
-      nbsp  = "␣";
+      nbsp = "␣";
       tab = "» ";
     };
 

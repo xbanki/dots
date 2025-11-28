@@ -15,22 +15,24 @@
 {
   description = "dots - Banki (xbanki) Dotfiles";
   inputs = {
-    nixpkgs.url              = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wsl.url          = "github:nix-community/nixos-wsl/main";
-    nixpkgs-sops.url         = "github:Mic92/sops-nix";
-    nixpkgs-nixvim.url       = "github:nix-community/nixvim";
-    nixpkgs-stable.url       = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
+    nixpkgs-nixvim.url = "github:nix-community/nixvim";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-sops.url = "github:Mic92/sops-nix";
+    nixpkgs-wsl.url = "github:nix-community/nixos-wsl/main";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = inputs:
-  let
-    props = builtins.fromTOML (builtins.readFile ./config.toml);
-    version = "25.05";
+  outputs =
+    inputs:
+    let
+      props = builtins.fromTOML (builtins.readFile ./config.toml);
+      version = "25.05";
 
-  in {
-    nixosConfigurations = {
-      wsl = import ./sys/wsl { inherit version inputs props; };
+    in
+    {
+      nixosConfigurations = {
+        wsl = import ./sys/wsl { inherit version inputs props; };
+      };
     };
-  };
 }

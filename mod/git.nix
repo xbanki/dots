@@ -8,7 +8,8 @@
 
 { props, pkgs, ... }:
 
-with props; {
+with props;
+{
   home.packages = with pkgs; [
     git-lfs
   ];
@@ -18,7 +19,7 @@ with props; {
       init.defaultBranch = git.mainbranch;
       user = {
         email = git.email;
-	name = git.name;
+        name = git.name;
       };
     };
 
