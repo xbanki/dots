@@ -53,6 +53,8 @@
           if vim.bo.filetype == "markdown" or vim.bo.filetype == "mdx" then
             vim.cmd("Markview splitToggle")
           end
+
+          vim.cmd("Markview splitClose")
         end
       '';
 
