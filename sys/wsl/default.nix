@@ -92,7 +92,11 @@ nixpkgs.lib.nixosSystem {
 
       wsl = {
         wslConf = {
-          interop.appendWindowsPath = false;
+          interop = {
+            appendWindowsPath = true;
+            enabled = true;
+          };
+
           automount.root = "/mnt";
         };
 
