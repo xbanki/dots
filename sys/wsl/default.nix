@@ -29,6 +29,7 @@ let
   };
 
   modules = builtins.map (m: import m args) [
+    ./../../mod/fastfetch.nix
     ./../../mod/oh-my-posh
     ./../../mod/direnv.nix
     ./../../mod/git.nix
