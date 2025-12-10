@@ -33,6 +33,7 @@
     {
       nixosConfigurations = {
         wsl = import ./sys/wsl { inherit version inputs props; };
+        os = import ./sys/os { inherit version inputs props; };
       };
     };
 }
