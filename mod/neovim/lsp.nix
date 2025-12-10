@@ -84,7 +84,7 @@
 
       lua_ls = {
         enable = true;
-        config.settings = {
+        config.settings.Lua = {
           workspace.checkThirdParty = false;
           telemetry.enable = false;
           hint.enable = true;
