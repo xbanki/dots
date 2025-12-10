@@ -1,3 +1,11 @@
+#   NixOS System Configuration
+#
+# Customized NixOS distribution. Lightweight and minimal by design.
+#
+#   Copyright: Banki <contact@xbanki.me>
+#              Licensed under the MIT License.
+#              See LICENSE for details.
+
 {
   inputs,
   ...
