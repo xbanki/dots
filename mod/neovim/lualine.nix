@@ -26,6 +26,8 @@
         yaml = "YAML",
         toml = "TOML",
         json = "JSON",
+        glsl = "GLSL",
+        cs = "C#",
       }
 
       function M.clamp(opts)
