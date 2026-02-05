@@ -10,7 +10,7 @@
 
 {
   extraPackages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   plugins.conform-nvim = {
@@ -18,7 +18,7 @@
     settings = {
       notify_no_formatters = false;
       notify_on_error = true;
-      format_on_save = {
+      format_after_save = {
         stop_after_first = true;
         lsp_format = "fallback";
         timeout_ms = 512;
