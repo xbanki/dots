@@ -32,7 +32,6 @@
         javascript = javascript;
         go = [ "golangcilint" ];
         yaml = [ "yamllint" ];
-        json = [ "jsonlint" ];
         python = [ "pylint" ];
         lua = [ "luacheck" ];
         vue = javascript;
@@ -53,7 +52,6 @@
         in
         with pkgs;
         {
-          jsonlint.cmd = exe nodePackages.jsonlint;
           eslint_d.cmd = exe nodePackages.eslint_d;
           luacheck.cmd = exe luaPackages.luacheck;
           golangcilint.cmd = exe golangci-lint;
