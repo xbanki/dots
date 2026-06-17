@@ -15,6 +15,11 @@
 {
   description = "dots - Banki (xbanki) Dotfiles";
   inputs = {
+    nixpgs-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
     nixpkgs-nixvim.url = "github:nix-community/nixvim";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -27,11 +32,12 @@
     inputs:
     let
       props = builtins.fromTOML (builtins.readFile ./config.toml);
-      version = "25.05";
+      version = "26.05";
 
     in
     {
       nixosConfigurations = {
+        macos = import ./sys/macos { inherit version inputs props; };
         wsl = import ./sys/wsl { inherit version inputs props; };
         os = import ./sys/os { inherit version inputs props; };
       };
