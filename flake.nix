@@ -16,13 +16,13 @@
   description = "dots - Banki (xbanki) Dotfiles";
   inputs = {
     nixpgs-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs-home-manager.url = "github:nix-community/home-manager";
     nixpkgs-nixvim.url = "github:nix-community/nixvim";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-sops.url = "github:Mic92/sops-nix";
     nixpkgs-wsl.url = "github:nix-community/nixos-wsl/main";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -37,9 +37,10 @@
     in
     {
       nixosConfigurations = {
-        macos = import ./sys/macos { inherit version inputs props; };
         wsl = import ./sys/wsl { inherit version inputs props; };
         os = import ./sys/os { inherit version inputs props; };
       };
+
+      darwinConfigurations.macos = import ./sys/macos { inherit version inputs props; };
     };
 }
