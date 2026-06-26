@@ -15,16 +15,39 @@
 {
   description = "dots - Banki (xbanki) Dotfiles";
   inputs = {
+    nixpkgs-hyprland = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:hyprwm/Hyprland/a0136d8c04687bb36eb8a28eb9d1ff92aea99704";
+    };
+
+    nixpkgs-hyprland-plugins = {
+      inputs.hyprland.follows = "nixpkgs-hyprland";
+      url = "github:hyprwm/hyprland-plugins/3aa21f2e0ca72412f1b434c3126f8f1fec3c716c";
+    };
+
     nixpgs-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-home-manager.url = "github:nix-community/home-manager";
+    nixpkgs-home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-wsl = {
+      url = "github:nix-community/nixos-wsl/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-nixvim.url = "github:nix-community/nixvim";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-sops.url = "github:Mic92/sops-nix";
-    nixpkgs-wsl.url = "github:nix-community/nixos-wsl/main";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
