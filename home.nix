@@ -27,7 +27,6 @@ with props;
   programs.zsh.enable = true;
   users = {
     users.${user.name} = {
-      hashedPasswordFile = config.sops.secrets.password.path;
       extraGroups = user.groups;
       isNormalUser = true;
       shell = pkgs.zsh;

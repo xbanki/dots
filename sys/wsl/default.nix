@@ -42,17 +42,17 @@ let
     with props;
     builtins.listToAttrs (
       builtins.concatLists ([
-        [
-          {
-            value = {
-              sopsFile = ./../../${user.password};
-              neededForUsers = true;
-              key = "data";
-            };
-
-            name = "password";
-          }
-        ]
+        # [
+        #   {
+        #     value = {
+        #       sopsFile = ./../../${user.password};
+        #       neededForUsers = true;
+        #       key = "data";
+        #     };
+        #
+        #     name = "password";
+        #   }
+        # ]
 
         (builtins.map
           (key: {
@@ -80,16 +80,16 @@ nixpkgs.lib.nixosSystem {
   specialArgs = specialArgs;
   modules = with props; [
     ./../../home.nix
-    nixpkgs-sops.nixosModules.sops
+    # nixpkgs-sops.nixosModules.sops
     nixpkgs-wsl.nixosModules.default
     nixpkgs-home-manager.nixosModules.home-manager
     {
       system.stateVersion = version;
-      sops = {
-        age.keyFile = user.sopskey;
-        defaultSopsFormat = "yaml";
-        secrets = secrets;
-      };
+      # sops = {
+      #   age.keyFile = user.sopskey;
+      #   defaultSopsFormat = "yaml";
+      #   secrets = secrets;
+      # };
 
       wsl = {
         wslConf = {
