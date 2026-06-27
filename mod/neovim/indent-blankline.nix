@@ -3,7 +3,7 @@
 # Configures virtual indentation lines for the editor, which makes code easier
 # to read.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

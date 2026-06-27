@@ -3,7 +3,7 @@
 # Direnv is configured to automatically trust any `default.nix` or `shell.nix`
 # within `~/Workspace`.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

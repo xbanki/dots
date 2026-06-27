@@ -2,7 +2,7 @@
 #
 # Configures gutter line git status characters, and an in-editor blame.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

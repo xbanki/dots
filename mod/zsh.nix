@@ -2,7 +2,7 @@
 #
 # Enables the usage of Z Shell (zsh) in the home configuration.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

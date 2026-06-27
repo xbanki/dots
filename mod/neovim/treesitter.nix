@@ -1,6 +1,6 @@
 #   Treesitter Configuration `github:nvim-treesitter/nvim-treesitter`
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

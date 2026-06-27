@@ -8,7 +8,7 @@
 #
 # While still shipping many common components I may depend on for development.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

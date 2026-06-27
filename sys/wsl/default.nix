@@ -3,7 +3,7 @@
 # Lightweight Windows development environment, enabling us to escape the hell
 # that is Windows instability, spyware and general bloat.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

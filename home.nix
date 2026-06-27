@@ -4,7 +4,7 @@
 # overrides `config.toml`. Installed packages depend on the target system
 # configuration.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

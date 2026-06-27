@@ -4,7 +4,7 @@
 # Simple & customized inline diagnostics rendering plugin. Configures Vim's
 # internal diagnostic icons, which are shown in the gutter.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 

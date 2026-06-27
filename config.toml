@@ -3,7 +3,7 @@
 # Configuration for system environment output. This file should be edited to
 # customize the final output based on your system needs.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
@@ -31,7 +31,7 @@ password = "enc/password.yml"
 [git] # Git source control management default options.
 
 # Default Git user email.
-email = "contact@xbanki.me"
+email = "development@xbanki.me"
 
 # Default Git user name.
 name = "xbanki"

@@ -6,7 +6,7 @@
 # Neovim's built-in file explorer (netrw) gets disabled in favor of Telescope's
 # `github:nvim-telescope/telescope-file-browser.nvim` plugin.
 #
-#   Copyright: Banki <contact@xbanki.me>
+#   Copyright: Banki <development@xbanki.me>
 #              Licensed under the MIT License.
 #              See LICENSE for details.
 
