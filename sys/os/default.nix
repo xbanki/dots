@@ -7,15 +7,27 @@
 #              See LICENSE for details.
 
 {
+  version,
   inputs,
   ...
 }:
 
 let
   system = "x86_64-linux";
+  specialArgs = { inherit system; };
 
 in
 with inputs;
 nixpkgs.lib.nixosSystem {
-  inherit system;
+  inherit specialArgs system;
+  modules = [
+    ./hardware.nix
+    {
+      system.stateVersion = version;
+      nixpkgs.config = {
+        allowUnfreePredicate = _: true;
+        allowUnfree = true;
+      };
+    }
+  ];
 }
