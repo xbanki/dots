@@ -21,6 +21,7 @@ with inputs;
 nixpkgs.lib.nixosSystem {
   inherit specialArgs system;
   modules = [
+    ./boot.nix
     ./hardware.nix
     {
       system.stateVersion = version;
