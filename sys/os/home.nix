@@ -64,6 +64,7 @@ with props;
           nixpkgs-hyprland.homeManagerModules.default
           (builtins.map (m: ../../mod + "/${m}") [
             "ghostty.nix"
+            "vesktop.nix"
             "hyprland"
             "git.nix"
             "gpg.nix"
