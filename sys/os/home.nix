@@ -54,6 +54,7 @@ with props;
         pkgs.lib.flatten [
           nixpkgs-nixvim.homeModules.nixvim
           (builtins.map (m: ../../mod + "/${m}") [
+            "ghostty.nix"
             "git.nix"
             "gpg.nix"
             "ssh.nix"
