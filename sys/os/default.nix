@@ -69,6 +69,7 @@ nixpkgs.lib.nixosSystem {
       }
 
       (builtins.map (m: ../../svc + "/${m}") [
+        "pipewire.nix"
         "gpg.nix"
       ])
     ];
