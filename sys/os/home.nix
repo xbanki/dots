@@ -13,12 +13,23 @@ let
   pkgs = import inputs.nixpkgs { inherit system; };
   extraSpecialArgs = {
     inherit
+      flatpaks
       inputs
       system
       props
       pkgs
       ;
   };
+
+  flatpaks = [
+    "com.github.Matoking.protontricks"
+    "com.github.tchx84.Flatseal"
+    "com.usebottles.bottles"
+    "net.davidotek.pupgui2"
+    "app.zen_browser.zen"
+    "com.spotify.Client"
+    "com.adamcake.Bolt"
+  ];
 
 in
 with props;
@@ -62,7 +73,9 @@ with props;
         pkgs.lib.flatten [
           nixpkgs-nixvim.homeModules.nixvim
           nixpkgs-hyprland.homeManagerModules.default
+          nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
+            "flatpak.nix"
             "ghostty.nix"
             "vesktop.nix"
             "hyprland"
