@@ -5,9 +5,20 @@
 {
   description = "Banki (xbanki) Dotfiles";
   inputs = {
+
+    nixpkgs-hyprland-plugins = {
+      inputs.hyprland.follows = "nixpkgs-hyprland";
+      url = "github:hyprwm/hyprland-plugins/3aa21f2e0ca72412f1b434c3126f8f1fec3c716c";
+    };
+
     nixpkgs-home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-hyprland = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:hyprwm/Hyprland/a0136d8c04687bb36eb8a28eb9d1ff92aea99704";
     };
 
     nixpkgs-nixvim = {

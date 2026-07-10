@@ -23,7 +23,15 @@ let
 in
 with props;
 {
-  environment.sessionVariables.XKB_DEFAULT_LAYOUT = os.layout;
+  environment = {
+    pathsToLink = [
+      "/share/applications"
+      "/share/xdg-desktop-portal"
+    ];
+
+    sessionVariables.XKB_DEFAULT_LAYOUT = os.layout;
+  };
+
   i18n.defaultLocale = os.locale;
   console.useXkbConfig = true;
   services.xserver = {
@@ -53,8 +61,10 @@ with props;
         with inputs;
         pkgs.lib.flatten [
           nixpkgs-nixvim.homeModules.nixvim
+          nixpkgs-hyprland.homeManagerModules.default
           (builtins.map (m: ../../mod + "/${m}") [
             "ghostty.nix"
+            "hyprland"
             "git.nix"
             "gpg.nix"
             "ssh.nix"
