@@ -78,6 +78,7 @@ with props;
             "flatpak.nix"
             "ghostty.nix"
             "vesktop.nix"
+            "direnv.nix"
             "hyprland"
             "git.nix"
             "gpg.nix"
