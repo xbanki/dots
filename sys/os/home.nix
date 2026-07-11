@@ -75,6 +75,7 @@ with props;
           nixpkgs-hyprland.homeManagerModules.default
           nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
+            "fastfetch.nix"
             "flatpak.nix"
             "ghostty.nix"
             "vesktop.nix"
