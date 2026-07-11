@@ -75,6 +75,7 @@ with props;
   nixpkgs.hostPlatform = lib.mkDefault system;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
+    steam-hardware.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.latest;
