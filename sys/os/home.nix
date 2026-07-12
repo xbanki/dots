@@ -86,6 +86,7 @@ with props;
             "vesktop.nix"
             "direnv.nix"
             "oh-my-posh"
+            "quickshell"
             "hyprland"
             "git.nix"
             "gpg.nix"
