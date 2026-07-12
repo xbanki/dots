@@ -17,7 +17,7 @@
 
     in
     {
-      enable = false;
+      enable = true;
       lintersByFt = {
         nix = [
           "deadnix"
