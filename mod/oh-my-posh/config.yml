@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+# Copyright: Banki <development@xbanki.me>
+#            Licensed under the MIT License.
+#            See LICENSE for details.
+
+# TODO: (xbanki) OhMyPosh theme.
+version: 4
+blocks:
+  - type: prompt
+    alignment: left
+    segments:
+      - template: "{{ .UserName }} "
+        type: session
+        style: plain
+
+      - template: "on {{ .Icon }} {{ .OS }}:"
+        style: plain
+        type: os
+      - template: "({{ .Name }}) "
+        style: plain
+        type: shell
+
+      - template: '{{ if ne .Type "unknown" }}as 󱄅 nix-shell-{{ .Type }} {{ end }}'
+        type: nix-shell
+        style: plain
+
+      - template: "in  {{ .Path }} "
+        style: plain
+        type: path
+        options:
+          style: agnoster_full
+
+      - template: "at  git:({{ if (.UpstreamIcon) }}{{ .UpstreamIcon }}{{ end }}{{ .HEAD }}{{ if or .Working.Changed .Staging.Changed }}*{{ end }}){{ if or (gt .Ahead 0) (gt .Behind 0) }} (󰁝 {{ .Ahead }} 󰁅 {{ .Behind }}){{ end }} "
+        style: plain
+        type: git
+        options:
+          fetch_upstream_icon: true
+          fetch_push_status: true
+          fetch_bare_info: true
+          fetch_status: true
+          branch_icon: " "

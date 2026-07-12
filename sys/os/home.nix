@@ -80,6 +80,7 @@ with props;
             "ghostty.nix"
             "vesktop.nix"
             "direnv.nix"
+            "oh-my-posh"
             "hyprland"
             "git.nix"
             "gpg.nix"
