@@ -7,7 +7,6 @@
   inputs,
   system,
   props,
-  pkgs,
   ...
 }:
 

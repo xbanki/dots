@@ -10,7 +10,11 @@
 }:
 
 let
-  pkgs = import inputs.nixpkgs { inherit system; };
+  pkgs = import inputs.nixpkgs {
+    config.allowUnfree = true;
+    inherit system;
+  };
+
   extraSpecialArgs = {
     inherit
       flatpaks
@@ -76,6 +80,7 @@ with props;
           nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
             "fastfetch.nix"
+            "obsidian.nix"
             "flatpak.nix"
             "ghostty.nix"
             "vesktop.nix"
