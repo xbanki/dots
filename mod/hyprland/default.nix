@@ -17,7 +17,12 @@ let
 in
 {
   # FIXME: (xbanki) Remove `hyprlauncher` once we have our shell built.
-  home.packages = with pkgs; [ hyprlauncher ];
+  home.packages = with pkgs; [
+    hyprlauncher
+    wl-clipboard
+    slurp
+    grim
+  ];
 
   xdg = {
     configFile = {

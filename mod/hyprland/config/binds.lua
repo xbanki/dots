@@ -28,5 +28,16 @@ hl.bind(util.b("SUPER_L"), hl.dsp.exec_cmd(config.SOFTWARE.LAUNCHER), { release 
 hl.bind(util.b("E"), hl.dsp.exec_cmd(config.SOFTWARE.EXPLORER))
 hl.bind(util.b("T"), hl.dsp.exec_cmd(config.SOFTWARE.TERMINAL))
 
+-- Screenshot.
+hl.bind("print",
+  hl.dsp.exec_cmd(
+    'OUTPUT=$(xdg-user-dir PICTURES)/Screenshots;     \
+     mkdir -p \"$OUTPUT\";                            \
+     grim -g \"$(slurp -d)\" - |                      \
+     tee \"$OUTPUT/$(date +%Y-%m-%d_%H-%M-%S).png\" | \
+     wl-copy'
+  )
+)
+
 -- Hyprland exit.
 hl.bind(util.b("ALT", "F2"), hl.dsp.exit())
