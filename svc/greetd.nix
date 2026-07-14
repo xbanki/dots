@@ -5,6 +5,7 @@
 {
   system,
   inputs,
+  props,
   pkgs,
   lib,
   ...
@@ -15,6 +16,7 @@ let
   config = "greetd/regreet-hyprland-config.lua";
 
 in
+with props;
 {
   environment = {
     systemPackages = [ hyprland ];
@@ -25,7 +27,7 @@ in
 
       hl.monitor({ output = "", disabled = true, })
       hl.monitor({
-        output = "desc:Lenovo Group Limited R25f-30 URW12Z0R",
+        output = "desc:${os.primarymonitor}",
         mode = "preferred",
         disabled = false,
         position = "0x0",
@@ -33,6 +35,12 @@ in
       })
 
       hl.config({
+        input = {
+          accel_profile = ${os.mouse.accelerationprofile},
+          sensitivity = ${os.mouse.sensitivity},
+          kb_layout = ${os.keyboard.layout},
+        },
+
         misc = {
           disable_hyprland_guiutils_check = true,
           disable_splash_rendering = true,

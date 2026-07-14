@@ -1,5 +1,13 @@
-<img src="./img/logo-nixos.svg" alt="" align="left" width="64" />
-<h1 align="center"><samp> xbanki dotfiles </samp></h1>
+<div id="user-content-toc">
+  <ul>
+    <summary align="center">
+      <img src="./img/logo-nixos.svg" align="left" alt="" width="88" />
+      <h1><samp> xbanki dotfiles </samp></h1>
+    </summary>
+  </ul>
+</div>
+
+---
 
 # License
 

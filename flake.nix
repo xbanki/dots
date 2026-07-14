@@ -57,6 +57,20 @@
 
         # System settings, which only apply to standalone NixOS (`#os`).
         os = {
+          primarymonitor = "Lenovo Group Limited R25f-30 URW12Z0R";
+
+          # System keyboard settings.
+          keyboard.layout = "fi";
+
+          # System mouse settings.
+          mouse = {
+
+            # Hyprland acceleration profile.
+            accelerationprofile = "flat";
+
+            # Hyprland mouse sensitivity. 0 means raw input.
+            sensitivity = "0";
+          };
 
           # Local system timezone.
           timezone = "Europe/Helsinki";
@@ -66,9 +80,6 @@
 
           # System language.
           locale = "en_US.UTF-8";
-
-          # System keyboard layout.
-          layout = "fi";
         };
 
         # Git configuration.

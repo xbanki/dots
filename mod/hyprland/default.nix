@@ -31,12 +31,12 @@ in
           local M = {}
 
           M.MOUSE = {
-            ACCELERATION_PROFILE = "flat",
-            SENSITIVITY = 0,
+            ACCELERATION_PROFILE = "${os.mouse.accelerationprofile}",
+            SENSITIVITY = ${os.mouse.sensitivity},
           }
 
           M.KEYBOARD = {
-            LAYOUT = "${os.layout}",
+            LAYOUT = "${os.keyboard.layout}",
             OPTIONS = "",
             VARIANT = "",
           }
@@ -47,7 +47,7 @@ in
             TERMINAL = "ghostty",
           }
 
-          M.MONITOR_PRIMARY = "Lenovo Group Limited R25f-30 URW12Z0R"
+          M.MONITOR_PRIMARY = "${os.primarymonitor}"
           M.USERNAME = "${user.name}"
 
           return M

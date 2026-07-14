@@ -44,14 +44,14 @@ with props;
       "/share/xdg-desktop-portal"
     ];
 
-    sessionVariables.XKB_DEFAULT_LAYOUT = os.layout;
+    sessionVariables.XKB_DEFAULT_LAYOUT = os.keyboard.layout;
   };
 
   i18n.defaultLocale = os.locale;
   console.useXkbConfig = true;
   services.xserver = {
+    xkb.layout = os.keyboard.layout;
     exportConfiguration = true;
-    xkb.layout = os.layout;
   };
 
   users.users.${user.name} = {
