@@ -71,6 +71,7 @@ nixpkgs.lib.nixosSystem {
       (builtins.map (m: ../../svc + "/${m}") [
         "pipewire.nix"
         "flatpak.nix"
+        "greetd.nix"
         "gpg.nix"
       ])
     ];
