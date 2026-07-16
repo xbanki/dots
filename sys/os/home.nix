@@ -76,6 +76,7 @@ with props;
         with inputs;
         pkgs.lib.flatten [
           nixpkgs-nixvim.homeModules.nixvim
+          nixpkgs-nixcord.homeModules.nixcord
           nixpkgs-hyprland.homeManagerModules.default
           nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
@@ -83,7 +84,7 @@ with props;
             "obsidian.nix"
             "flatpak.nix"
             "ghostty.nix"
-            "vesktop.nix"
+            "discord.nix"
             "direnv.nix"
             "oh-my-posh"
             "quickshell"

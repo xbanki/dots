@@ -32,6 +32,7 @@
     };
 
     nixpkgs-nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixpkgs-nixcord.url = "github:4evy/nixcord";
     nixpkgs-awww.url = "git+https://codeberg.org/LGFae/awww";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
