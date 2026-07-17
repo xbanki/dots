@@ -61,19 +61,6 @@ in
         recursive = true;
       };
     };
-
-    portal = {
-      enable = true;
-      config.hyprland.default = [
-        "hyprland"
-        "gtk"
-      ];
-
-      extraPortals = with pkgs; [
-        kdePackages.xdg-desktop-portal-kde
-        xdg-desktop-portal-gtk
-      ];
-    };
   };
 
   wayland.windowManager.hyprland = {
@@ -83,9 +70,8 @@ in
     ];
 
     extraConfig = builtins.readFile ./shim.lua;
-    systemd.variables = [ "--all" ];
     inherit portalPackage package;
-    xwayland.enable = true;
+    systemd.enable = false;
     configType = "lua";
     enable = true;
   };

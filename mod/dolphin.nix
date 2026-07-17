@@ -2,12 +2,12 @@
 #            Licensed under the MIT License.
 #            See LICENSE for details.
 
-{ props, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  home-manager.users.${props.user.name}.xdg = {
+  xdg = {
     portal.config.hyprland."org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
-    mimeApps.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
+    mime.defaultApplications."inode/directory" = "org.kde.dolphin.desktop";
   };
 
   environment.systemPackages = builtins.concatLists [

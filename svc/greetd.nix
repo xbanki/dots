@@ -12,14 +12,13 @@
 }:
 
 let
-  hyprland = inputs.nixpkgs-hyprland.packages.${system}.hyprland;
+  package = inputs.nixpkgs-hyprland.packages.${system}.hyprland;
   config = "greetd/regreet-hyprland-config.lua";
 
 in
 with props;
 {
   environment = {
-    systemPackages = [ hyprland ];
     etc.${config}.text = ''
       hl.on("hyprland.start", function()
         hl.exec_cmd("${lib.getExe pkgs.regreet}; hyprctl dispatch 'hl.dsp.exit()'")
@@ -36,9 +35,9 @@ with props;
 
       hl.config({
         input = {
-          accel_profile = ${os.mouse.accelerationprofile},
+          accel_profile = "${os.mouse.accelerationprofile}",
           sensitivity = ${os.mouse.sensitivity},
-          kb_layout = ${os.keyboard.layout},
+          kb_layout = "${os.keyboard.layout}",
         },
 
         misc = {
@@ -50,10 +49,14 @@ with props;
     '';
   };
 
+  programs.hyprland = {
+    enable = true;
+  };
+
   programs.regreet.enable = true;
   services.greetd = {
     settings.default_session = {
-      command = "${pkgs.dbus}/bin/dbus-run-session ${hyprland}/bin/start-hyprland -- -c /etc/${config}";
+      command = "${pkgs.dbus}/bin/dbus-run-session ${package}/bin/start-hyprland -- -c /etc/${config}";
       user = "greeter";
     };
 
