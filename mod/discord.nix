@@ -7,6 +7,7 @@
 with props;
 {
   programs.nixcord = {
+    discord.enable = false;
     config.plugins = {
       fakeNitro = {
         enableStickerBypass = false;
