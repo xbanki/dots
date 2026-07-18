@@ -28,7 +28,7 @@
         javascriptreact = javascript;
         typescript = javascript;
         javascript = javascript;
-        go = [ "golangcilint" ];
+        # go = [ "golangcilint" ];
         yaml = [ "yamllint" ];
         python = [ "pylint" ];
         lua = [ "luacheck" ];
@@ -51,7 +51,7 @@
         with pkgs;
         {
           luacheck.cmd = exe luaPackages.luacheck;
-          golangcilint.cmd = exe golangci-lint;
+          # golangcilint.cmd = exe golangci-lint;
           shellcheck.cmd = exe shellcheck;
           yamllint.cmd = exe yamllint;
           eslint_d.cmd = exe eslint_d;
