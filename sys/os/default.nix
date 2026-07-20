@@ -69,6 +69,7 @@ nixpkgs.lib.nixosSystem {
       }
 
       (builtins.map (m: ../../svc + "/${m}") [
+        "virtualisation.nix"
         "hyprland.nix"
         "pipewire.nix"
         "flatpak.nix"
