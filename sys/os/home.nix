@@ -88,6 +88,7 @@ with props;
             "direnv.nix"
             "oh-my-posh"
             "quickshell"
+            "prism.nix"
             "awww.nix"
             "hyprland"
             "git.nix"
