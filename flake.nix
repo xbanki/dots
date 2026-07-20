@@ -50,7 +50,12 @@
           home = "/home/${name}";
 
           # Groups that the user should belong in. Not applied on MacOS.
-          groups = [ "wheel" ];
+          groups = [
+            "adbusers"
+            "libvirtd"
+            "wheel"
+            "kvm"
+          ];
 
           # Local user name.
           name = "xbanki";
