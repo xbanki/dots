@@ -71,6 +71,7 @@ with props;
     { device = "/dev/disk/by-uuid/517d82fc-1c14-4a63-b7f6-29b75f33311d"; }
   ];
 
+  powerManagement.cpuFreqGovernor = "performance";
   boot.kernelModules = [ "kvm-amd" ];
   nixpkgs.hostPlatform = lib.mkDefault system;
   services.xserver.videoDrivers = [ "nvidia" ];
