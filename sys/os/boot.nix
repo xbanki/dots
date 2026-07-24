@@ -22,7 +22,8 @@
           "--modules=tpm"
         ];
 
-        extraEntriesBeforeNixOS = ''
+        extraEntriesBeforeNixOS = true;
+        extraEntries = ''
           menuentry "EFI System Settings" {
             fwsetup
           }
