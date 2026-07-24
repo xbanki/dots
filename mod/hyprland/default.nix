@@ -20,6 +20,7 @@ in
   home.packages = with pkgs; [
     hyprlauncher
     wl-clipboard
+    xrandr
     slurp
     grim
   ];
