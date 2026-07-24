@@ -22,6 +22,12 @@
           "--modules=tpm"
         ];
 
+        extraEntriesBeforeNixOS = ''
+          menuentry "EFI System Settings" {
+            fwsetup
+          }
+        '';
+
         extraConfig = "GRUB_SAVEDEFAULT=true";
         configurationName = "Nix";
         configurationLimit = 16;
