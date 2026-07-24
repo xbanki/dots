@@ -24,7 +24,9 @@ hl.bind(util.b("W"), hl.dsp.window.close())
 hl.bind(util.b("Q"), hl.dsp.window.kill())
 
 -- Software launch.
-hl.bind(util.b("SUPER_L"), hl.dsp.exec_cmd(config.SOFTWARE.LAUNCHER), { release = true, submap_universal = true, })
+hl.bind(util.b("SUPER_L"), hl.dsp.exec_cmd("uwsm app -- " .. config.SOFTWARE.LAUNCHER .. " -d"),
+  { release = true, submap_universal = true, })
+
 hl.bind(util.b("E"), hl.dsp.exec_cmd(config.SOFTWARE.EXPLORER))
 hl.bind(util.b("T"), hl.dsp.exec_cmd(config.SOFTWARE.TERMINAL))
 
@@ -40,4 +42,4 @@ hl.bind("print",
 )
 
 -- Hyprland exit.
-hl.bind(util.b("ALT", "F2"), hl.dsp.exit())
+hl.bind(util.b("ALT", "F2"), hl.dsp.exec_cmd("uwsm stop"))
