@@ -66,13 +66,13 @@ hl.config({
 hl.monitor({
   output = "desc:BNQ BenQ GW2470 K9H02321SL0",
   mode = "preferred",
-  position = "0x0",
+  position = "1920x0",
   scale = 1,
 })
 
 hl.monitor({
   output = "desc:Lenovo Group Limited R25f-30 URW12Z0R",
-  position = "1920x0",
+  position = "0x0",
   mode = "preferred",
   scale = 1,
 })
