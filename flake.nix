@@ -78,9 +78,6 @@
             sensitivity = "0";
           };
 
-          # Local system timezone.
-          timezone = "Europe/Helsinki";
-
           # System name, as it appears on the network.
           hostname = "Banki-NIX";
 

@@ -65,11 +65,11 @@ nixpkgs.lib.nixosSystem {
         };
 
         security.rtkit.enable = true;
-        time.timeZone = os.timezone;
       }
 
       (builtins.map (m: ../../svc + "/${m}") [
         "virtualisation.nix"
+        "timezoned.nix"
         "hyprland.nix"
         "pipewire.nix"
         "flatpak.nix"
