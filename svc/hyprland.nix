@@ -15,6 +15,7 @@ let
 
 in
 {
+  services.dbus.implementation = "broker";
   xdg.portal = {
     config.hyprland.default = [
       "hyprland"
@@ -28,6 +29,7 @@ in
 
     enable = true;
   };
+
   programs.hyprland = {
     inherit portalPackage package;
     withUWSM = true;

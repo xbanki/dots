@@ -5,7 +5,6 @@
 local config = require "config"
 
 -- Environment variables
-hl.env("XDG_CACHE_HOME", "/cache/user/" .. config.USERNAME)
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
