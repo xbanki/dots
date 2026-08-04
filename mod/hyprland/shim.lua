@@ -14,7 +14,12 @@ require "env"
 require "binds"
 require "rules"
 
+local config = require "config"
 local monitors = require "monitors"
+
+hl.on("hyprland.start", function()
+  hl.exec_cmd("nix-shell -p setxkbmap --run \"setxkbmap " .. config.KEYBOARD.LAYOUT .. "\"")
+end)
 
 local function callback_monitors()
   monitors.enumerate_primary()
