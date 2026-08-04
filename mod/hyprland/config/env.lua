@@ -4,25 +4,6 @@
 
 local config = require "config"
 
--- Environment variables
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
-hl.env("XDG_SESSION_DESKTOP", "Hyprland")
-hl.env("XDG_SESSION_TYPE", "wayland")
-
--- Force Wayland session everywhere
-hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
-hl.env("OZONE_PLATFORM", "wayland")
-
-hl.env("QT_QPA_PLATFORM", "wayland;xcb")
-hl.env("GDK_BACKEND", "wayland,x11,*")
-hl.env("MOZ_ENABLE_WAYLAND", "1")
-
--- Nvidia driver variables
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("WLR_DRM_NO_ATOMIC", "1")
-
 -- Global configuration
 hl.config({
 
