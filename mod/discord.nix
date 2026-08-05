@@ -7,7 +7,7 @@
 with props;
 {
   programs.nixcord = {
-    discord.enable = false;
+    discord.vencord.enable = true;
     config.plugins = {
       fakeNitro = {
         enableStickerBypass = false;
@@ -33,7 +33,6 @@ with props;
       noF1.enable = true;
     };
 
-    vesktop.enable = true;
     user = user.name;
     enable = true;
   };
