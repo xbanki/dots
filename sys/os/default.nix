@@ -69,6 +69,7 @@ nixpkgs.lib.nixosSystem {
 
       (builtins.map (m: ../../svc + "/${m}") [
         "virtualisation.nix"
+        "playerctl.nix"
         "timezoned.nix"
         "hypridle.nix"
         "hyprland.nix"
