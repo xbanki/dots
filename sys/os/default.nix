@@ -70,6 +70,7 @@ nixpkgs.lib.nixosSystem {
       (builtins.map (m: ../../svc + "/${m}") [
         "virtualisation.nix"
         "timezoned.nix"
+        "hypridle.nix"
         "hyprland.nix"
         "pipewire.nix"
         "flatpak.nix"

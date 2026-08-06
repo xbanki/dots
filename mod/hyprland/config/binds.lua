@@ -41,5 +41,6 @@ hl.bind("print",
   )
 )
 
--- Hyprland exit.
+-- Shell state
+hl.bind(util.b("L"), hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(util.b("ALT", "F2"), hl.dsp.exec_cmd("uwsm stop"))

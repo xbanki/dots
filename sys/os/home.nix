@@ -81,6 +81,8 @@ with props;
           nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
             "fastfetch.nix"
+            "hyprlock.nix"
+            "hypridle.nix"
             "obsidian.nix"
             "flatpak.nix"
             "ghostty.nix"
