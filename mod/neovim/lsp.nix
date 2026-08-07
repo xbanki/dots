@@ -1,11 +1,6 @@
-#   LSP Configuration
-#
-# Configures a spell checker, and language servers for many of the popular
-# languages. Configures schematic validation for JSON, YAML and TOML.
-#
-#   Copyright: Banki <development@xbanki.me>
-#              Licensed under the MIT License.
-#              See LICENSE for details.
+# Copyright: Banki <development@xbanki.me>
+#            Licensed under the MIT License.
+#            See LICENSE for details.
 
 { pkgs, lib, ... }:
 
