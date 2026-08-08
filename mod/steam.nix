@@ -12,6 +12,10 @@
   programs = {
     gamescope.enable = true;
     gamemode.enable = true;
-    steam.enable = true;
+    steam = {
+      localNetworkGameTransfers.openFirewall = true;
+      remotePlay.openFirewall = true;
+      enable = true;
+    };
   };
 }
