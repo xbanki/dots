@@ -53,7 +53,7 @@ with props;
     enable = true;
   };
 
-  programs.regreet.enable = true;
+  services.displayManager.regreet.enable = true;
   services.greetd = {
     settings.default_session = {
       command = "${pkgs.dbus}/bin/dbus-run-session ${package}/bin/start-hyprland -- -c /etc/${config}";
