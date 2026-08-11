@@ -2,10 +2,14 @@
 #            Licensed under the MIT License.
 #            See LICENSE for details.
 
-{ inputs, ... }:
+{ inputs, system, ... }:
 
 {
   programs.nixvim = {
+    extraPackages = [
+      inputs.nixpkgs-qml-language-server.packages.${system}.default
+    ];
+
     nixpkgs.source = inputs.nixpkgs;
     defaultEditor = true;
     vimdiffAlias = true;

@@ -5,7 +5,6 @@
 {
   description = "Banki (xbanki) Dotfiles";
   inputs = {
-
     nixpkgs-hyprland-plugins = {
       inputs.hyprland.follows = "nixpkgs-hyprland";
       url = "github:hyprwm/hyprland-plugins/3aa21f2e0ca72412f1b434c3126f8f1fec3c716c";
@@ -31,6 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-qml-language-server.url = "github:cushycush/qml-language-server";
     nixpkgs-nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-nixcord.url = "github:4evy/nixcord";
     nixpkgs-awww.url = "git+https://codeberg.org/LGFae/awww";
