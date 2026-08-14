@@ -105,6 +105,7 @@ with props;
 
   imports = builtins.map (m: ../../mod + "/${m}") [
     "dolphin.nix"
+    "fonts.nix"
     "steam.nix"
   ];
 }
