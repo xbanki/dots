@@ -75,6 +75,7 @@ in
         noto-fonts-color-emoji
         noto-fonts-cjk-serif
         noto-fonts-cjk-sans
+        jetbrains-mono
         cal-sans-text
         cal-sans-ui
         noto-fonts

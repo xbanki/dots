@@ -35,6 +35,7 @@ in
         export ELECTRON_OZONE_PLATFORM_HINT = "wayland"
         export XDG_SESSION_TYPE             = "wayland"
         export OZONE_PLATFORM               = "wayland"
+        export AQ_NO_MODIFIERS              = "1"
         export MOZ_ENABLE_WAYLAND           = "1"
       '';
 
