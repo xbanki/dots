@@ -34,6 +34,11 @@
 
     # FIXME(xbanki): Temporarily use Tokyo Night as our color scheme.
     colorschemes.tokyonight.enable = true;
+    extraConfigLua = ''
+      if (vim.env.NVIM_DEV_ENV or "") ~= "" then
+        vim.opt.rtp:prepend(vim.fn.expand(vim.env.NVIM_DEV_ENV))
+      end
+    '';
 
     # Enables plugins which do not require explicit configuration, or whose
     # default configuration fits the configuration needs.

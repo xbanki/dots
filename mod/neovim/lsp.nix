@@ -91,7 +91,14 @@
       lua_ls = {
         enable = true;
         config.settings.Lua = {
-          workspace.checkThirdParty = false;
+          workspace = {
+            checkThirdParty = false;
+            library = [
+              "\${VIMRUNTIME}"
+            ];
+          };
+
+          diagnostics.globals = [ "vim" ];
           telemetry.enable = false;
           hint.enable = true;
         };
