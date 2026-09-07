@@ -93,12 +93,13 @@
         config.settings.Lua = {
           workspace = {
             checkThirdParty = false;
-            library = [
-              "\${VIMRUNTIME}"
-            ];
+            library = lib.nixvim.mkRaw ''
+              vim.api.nvim_get_runtime_file("lua", true)
+            '';
           };
 
           diagnostics.globals = [ "vim" ];
+          signatureHelp.enable = true;
           telemetry.enable = false;
           hint.enable = true;
         };
