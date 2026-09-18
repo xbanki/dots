@@ -35,14 +35,10 @@ nixpkgs.lib.nixosSystem {
       nixpkgs-home-manager.nixosModules.home-manager
       {
         system.stateVersion = version;
+        networking.hostName = os.hostname;
         nixpkgs.config = {
           allowUnfreePredicate = _: true;
           allowUnfree = true;
-        };
-
-        networking = {
-          networkmanager.enable = true;
-          hostName = os.hostname;
         };
 
         environment.sessionVariables = rec {
@@ -69,6 +65,7 @@ nixpkgs.lib.nixosSystem {
 
       (builtins.map (m: ../../svc + "/${m}") [
         "virtualisation.nix"
+        "networking.nix"
         "playerctl.nix"
         "timezoned.nix"
         "hypridle.nix"
