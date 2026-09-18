@@ -6,4 +6,13 @@
 
 {
   services.automatic-timezoned.enable = true;
+  fileSystems."/usr/share/zoneinfo" = {
+    device = "/etc/zoneinfo";
+    fsType = "fuse.bindfs";
+    options = [
+      "ro"
+      "x-gvfs-hide"
+      "resolve-symlinks"
+    ];
+  };
 }
