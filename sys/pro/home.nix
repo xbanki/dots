@@ -31,6 +31,7 @@ with props;
         ./../../svc/gpg.nix
         nixpkgs-nixvim.homeModules.nixvim
         (builtins.map (m: ../../mod + "/${m}") [
+          "direnv.nix"
           "oh-my-posh"
           "git.nix"
           "gpg.nix"

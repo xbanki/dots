@@ -2,9 +2,16 @@
 #            Licensed under the MIT License.
 #            See LICENSE for details.
 
-{ props, ... }:
+{ props, pkgs, ... }:
 
-with props;
+let
+  home =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "/Users/${props.user.name}"
+    else
+      "/home/${props.user.name}";
+
+in
 {
   programs.direnv = {
     config = {
@@ -15,8 +22,8 @@ with props;
       };
 
       whitelist.prefix = [
-        "${user.home}/Workspace"
-        "${user.home}/workspace"
+        "${home}/Workspace"
+        "${home}/workspace"
       ];
     };
 
