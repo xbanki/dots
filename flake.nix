@@ -86,6 +86,9 @@
         # Git configuration.
         git = {
 
+          # GPG signature key fingerprint.
+          fingerprint = "D39EA92315C19775";
+
           # Git user name.
           name = "xbanki";
 

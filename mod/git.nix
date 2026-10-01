@@ -12,8 +12,10 @@ with props;
 
   programs.git = {
     settings = {
+      commit.gpgsign = true;
       init.defaultBranch = git.branch;
       user = {
+        signingkey = git.fingerprint;
         email = git.email;
         name = git.name;
       };
