@@ -73,7 +73,7 @@ if hl.plugin.csgo_vulkan_fix ~= nil then
   hl.config({
     plugin = {
       csgo_vulkan_fix = {
-        fix_mouse = true,
+        fix_mouse = false,
       },
     },
   })
