@@ -30,6 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs-qml-language-server.url = "github:cushycush/qml-language-server";
     nixpkgs-nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-nixcord.url = "github:4evy/nixcord";
@@ -44,10 +45,7 @@
       props = {
 
         # Local user settings.
-        user = rec {
-
-          # User home directory path.
-          home = "/home/${name}";
+        user = {
 
           # Groups that the user should belong in. Not applied on MacOS.
           groups = [
@@ -113,6 +111,10 @@
     {
       nixosConfigurations = {
         os = import ./sys/os { inherit version inputs props; };
+      };
+
+      darwinConfigurations = {
+        pro = import ./sys/pro { inherit version inputs props; };
       };
     };
 }

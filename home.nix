@@ -12,13 +12,18 @@
 
 let
   pkgs = import inputs.nixpkgs { inherit system; };
+  home =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "/Users/${props.user.name}"
+    else
+      "/home/${props.user.name}";
 
 in
 with props;
 {
   programs.zsh.enable = true;
   users.users.${user.name} = {
-    home = user.home;
+    inherit home;
     shell = pkgs.zsh;
   };
 
@@ -27,8 +32,8 @@ with props;
       programs.home-manager.enable = true;
       home = {
         shell.enableZshIntegration = true;
-        homeDirectory = user.home;
         stateVersion = version;
+        homeDirectory = home;
         username = user.name;
       };
     };
