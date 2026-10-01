@@ -2,12 +2,19 @@
 #            Licensed under the MIT License.
 #            See LICENSE for details.
 
-{ props, ... }:
+{ props, pkgs, ... }:
 
-with props;
+let
+  home =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "/Users/${props.user.name}"
+    else
+      "/home/${props.user.name}";
+
+in
 {
   programs.gpg = {
-    homedir = "/home/${user.name}/.config/gnupg";
+    homedir = "${home}/.config/gnupg";
     enable = true;
   };
 }

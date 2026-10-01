@@ -32,6 +32,7 @@ with props;
         nixpkgs-nixvim.homeModules.nixvim
         (builtins.map (m: ../../mod + "/${m}") [
           "git.nix"
+          "gpg.nix"
           "ssh.nix"
           "neovim"
         ])

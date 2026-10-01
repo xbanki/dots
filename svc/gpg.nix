@@ -2,13 +2,27 @@
 #            Licensed under the MIT License.
 #            See LICENSE for details.
 
-{ pkgs, ... }:
+{ system, inputs, ... }:
 
-{
-  programs.gnupg.agent = {
-    pinentryPackage = pkgs.pinentry-tty;
-    enableBrowserSocket = true;
-    enableSSHSupport = true;
-    enable = true;
-  };
-}
+let
+  pkgs = import inputs.nixpkgs { inherit system; };
+
+in
+with pkgs;
+if stdenv.hostPlatform.isDarwin then
+  {
+    services.gpg-agent = {
+      pinentry.package = pinentry_mac;
+      enable = true;
+    };
+  }
+
+else
+  {
+    programs.gnupg.agent = {
+      pinentryPackage = pinentry-tty;
+      enableBrowserSocket = true;
+      enableSSHSupport = true;
+      enable = true;
+    };
+  }
