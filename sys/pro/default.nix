@@ -27,6 +27,7 @@ nixpkgs-nix-darwin.lib.darwinSystem {
   modules = [
     ./home.nix
     ./../../home.nix
+    nixpkgs-homebrew.darwinModules.default
     nixpkgs-determinate.darwinModules.default
     nixpkgs-home-manager.darwinModules.home-manager
     {

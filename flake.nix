@@ -10,6 +10,16 @@
       url = "github:hyprwm/hyprland-plugins/3aa21f2e0ca72412f1b434c3126f8f1fec3c716c";
     };
 
+    nixpkgs-homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    nixpkgs-homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
     nixpkgs-home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +48,7 @@
     nixpkgs-determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixpkgs-qml-language-server.url = "github:cushycush/qml-language-server";
     nixpkgs-nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixpkgs-homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs-nixcord.url = "github:4evy/nixcord";
     nixpkgs-awww.url = "git+https://codeberg.org/LGFae/awww";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

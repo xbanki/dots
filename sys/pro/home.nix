@@ -22,7 +22,27 @@ let
 
 in
 with props;
-{
+rec {
+  system.primaryUser = user.name;
+  nix-homebrew = {
+    taps = with inputs; {
+      "homebrew/homebrew-core" = nixpkgs-homebrew-core;
+      "homebrew/homebrew-cask" = nixpkgs-homebrew-cask;
+    };
+
+    user = props.user.name;
+    mutableTaps = false;
+    enable = true;
+  };
+
+  homebrew = {
+    taps = builtins.attrNames nix-homebrew.taps;
+    enable = true;
+    casks = [
+      "ghostty"
+    ];
+  };
+
   home-manager = {
     inherit extraSpecialArgs;
     users.${user.name}.imports =

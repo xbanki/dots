@@ -33,6 +33,23 @@
         "type": "github"
       }
     },
+    "brew-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789661079,
+        "narHash": "sha256-geVTQ51PGZ1mLULM5k7wO7qt/6xenOR/YG8X7Q3eCaI=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "edb70f031e4170c780799633a1226ff73e1077f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "ref": "7.0.4",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
     "determinate-nixd-aarch64-darwin": {
       "flake": false,
       "locked": {
@@ -656,6 +673,56 @@
         "type": "github"
       }
     },
+    "nixpkgs-homebrew": {
+      "inputs": {
+        "brew-src": "brew-src"
+      },
+      "locked": {
+        "lastModified": 1789928041,
+        "narHash": "sha256-iV37ieTcE4ZLOYEe0VznW6dWMBe4lEL8AbK1vblyZGM=",
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "rev": "c11cccfdd36dd69b5323d70d354b2853379c2426",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "type": "github"
+      }
+    },
+    "nixpkgs-homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791157122,
+        "narHash": "sha256-axtEyLC48tmepsMAt+RYr+/0aLfE3OPc3cq3S75fHBw=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "5c8e4e27110db70388bac1866cd2d27bc472d405",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "nixpkgs-homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791156509,
+        "narHash": "sha256-hp7E1h7vA4t/8CVBDkHTpluq7kjA6axewiY8fXLUKHU=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "75f9051b8fe21bb275ee59e5e95604e779f1e205",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
     "nixpkgs-hyprland": {
       "inputs": {
         "aquamarine": "aquamarine",
@@ -990,6 +1057,9 @@
         "nixpkgs-awww": "nixpkgs-awww",
         "nixpkgs-determinate": "nixpkgs-determinate",
         "nixpkgs-home-manager": "nixpkgs-home-manager",
+        "nixpkgs-homebrew": "nixpkgs-homebrew",
+        "nixpkgs-homebrew-cask": "nixpkgs-homebrew-cask",
+        "nixpkgs-homebrew-core": "nixpkgs-homebrew-core",
         "nixpkgs-hyprland": "nixpkgs-hyprland",
         "nixpkgs-hyprland-plugins": "nixpkgs-hyprland-plugins",
         "nixpkgs-nix-darwin": "nixpkgs-nix-darwin",
