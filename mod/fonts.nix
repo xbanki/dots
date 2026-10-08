@@ -84,6 +84,7 @@ in
       ];
 
     fontconfig = {
+      enable = true;
       useEmbeddedBitmaps = true;
       defaultFonts = {
         monospace = [
