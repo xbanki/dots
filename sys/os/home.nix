@@ -80,6 +80,7 @@ with props;
           nixpkgs-hyprland.homeManagerModules.default
           nixpkgs-nix-flatpak.homeManagerModules.nix-flatpak
           (builtins.map (m: ../../mod + "/${m}") [
+            "figma-agent.nix"
             "fastfetch.nix"
             "hyprlock.nix"
             "hypridle.nix"
