@@ -20,7 +20,7 @@ let
               AddKeysToAgent = "yes";
               identifier = "*";
             }
-            // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+            // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
               UseKeychain = true;
             }
           )
