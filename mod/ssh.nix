@@ -30,6 +30,7 @@ let
 
 in
 {
+  services.ssh-agent.enable = pkgs.stdenv.hostPlatform.isLinux;
   programs.ssh = {
     enableDefaultConfig = false;
     settings = hosts;
