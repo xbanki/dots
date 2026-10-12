@@ -7,7 +7,7 @@
   inputs = {
     nixpkgs-hyprland-plugins = {
       inputs.hyprland.follows = "nixpkgs-hyprland";
-      url = "github:hyprwm/hyprland-plugins/7644cecdb947060682891a0db2a0cdc5c0b9e704";
+      url = "github:hyprwm/hyprland-plugins";
     };
 
     nixpkgs-homebrew-core = {
@@ -37,7 +37,7 @@
 
     nixpkgs-hyprland = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:hyprwm/Hyprland/efb50993780079460b0cbed1363e2166a2de1d9f";
+      url = "github:hyprwm/Hyprland";
     };
 
     nixpkgs-nixvim = {
