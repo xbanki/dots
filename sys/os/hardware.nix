@@ -45,20 +45,6 @@
       fsType = "ntfs3";
     };
 
-    "/share/hdd" = {
-      options = [
-        "uid=1000"
-        "gid=1000"
-        "rw"
-        "user"
-        "exec"
-        "umask=000"
-      ];
-
-      device = "/dev/disk/by-uuid/4840454F40454542";
-      fsType = "ntfs3";
-    };
-
     "/share/media" = {
       options = [
         "uid=1000"
