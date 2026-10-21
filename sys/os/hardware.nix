@@ -69,6 +69,7 @@
   nixpkgs.hostPlatform = lib.mkDefault system;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
+    wooting.enable = true;
     steam-hardware.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
