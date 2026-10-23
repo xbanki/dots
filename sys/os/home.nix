@@ -47,6 +47,7 @@ with props;
     sessionVariables.XKB_DEFAULT_LAYOUT = os.keyboard.layout;
   };
 
+  time.timeZone = pkgs.lib.mkDefault os.timezone;
   i18n.defaultLocale = os.locale;
   console.useXkbConfig = true;
   services.xserver = {
@@ -55,7 +56,6 @@ with props;
   };
 
   users.users.${user.name} = {
-
     extraGroups = user.groups;
     isNormalUser = true;
   };

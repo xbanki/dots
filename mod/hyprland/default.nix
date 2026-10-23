@@ -30,6 +30,7 @@ in
       "uwsm/env-hyprland".text = ''
         export GDK_BACKEND                  = "wayland,x11,*"
         export QT_QPA_PLATFORM              = "wayland;xcb"
+        export TZDIR                        = /etc/zoneinfo
         export XDG_SESSION_DESKTOP          = "Hyprland"
         export XDG_CURRENT_DESKTOP          = "Hyprland"
         export ELECTRON_OZONE_PLATFORM_HINT = "wayland"
@@ -40,6 +41,7 @@ in
       '';
 
       "uwsm/env".text = ''
+        export TZDIR                        = /etc/zoneinfo
         export __GLX_VENDOR_LIBRARY_NAME    = "nvidia"
         export LIBVA_DRIVER_NAME            = "nvidia"
         export WLR_NO_HARDWARE_CURSORS      = "1"

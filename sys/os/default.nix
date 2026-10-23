@@ -67,7 +67,7 @@ nixpkgs.lib.nixosSystem {
         "virtualisation.nix"
         "networking.nix"
         "playerctl.nix"
-        "timezoned.nix"
+        "tzupdate.nix"
         "hypridle.nix"
         "hyprland.nix"
         "pipewire.nix"

@@ -95,6 +95,9 @@
           # System name, as it appears on the network.
           hostname = "Banki-NIX";
 
+          # Default timezone, if it cannot be automatically set by `tzupdate`.
+          timezone = "Europe/Helsinki";
+
           # System language.
           locale = "en_US.UTF-8";
         };

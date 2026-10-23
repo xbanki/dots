@@ -4,6 +4,8 @@
 
 local config = require "config"
 
+hl.env("TZDIR", "/etc/zoneinfo")
+
 -- Global configuration
 hl.config({
 
