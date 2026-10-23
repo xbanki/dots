@@ -17,7 +17,7 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/4ff24e58-c219-4984-99fa-a8c853c9a277";
+      device = "/dev/disk/by-uuid/84edaebd-8060-4f1c-9402-8f766a2b4333";
       fsType = "ext4";
     };
 
@@ -27,7 +27,7 @@
         "dmask=0022"
       ];
 
-      device = "/dev/disk/by-uuid/1AF2-81C6";
+      device = "/dev/disk/by-uuid/DD19-4ED5";
       fsType = "vfat";
     };
 
@@ -41,7 +41,7 @@
         "umask=000"
       ];
 
-      device = "/dev/disk/by-uuid/8C0244B00244A156";
+      device = "/dev/disk/by-uuid/7DB4BC244C6D9A95";
       fsType = "ntfs3";
     };
 
@@ -55,13 +55,13 @@
         "umask=000"
       ];
 
-      device = "/dev/disk/by-uuid/7CC6671EC666D7C2";
+      device = "/dev/disk/by-uuid/5ECBA2F0307D0A5F";
       fsType = "ntfs3";
     };
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/63d63beb-4c11-42ef-8751-f5014f572530"; }
+    { device = "/dev/disk/by-uuid/638bc83e-2c4d-481f-988a-b7f46306c4ad"; }
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
