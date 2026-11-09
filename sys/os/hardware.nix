@@ -68,6 +68,10 @@
   boot.kernelModules = [ "kvm-amd" ];
   nixpkgs.hostPlatform = lib.mkDefault system;
   services.xserver.videoDrivers = [ "nvidia" ];
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
   hardware = {
     wooting.enable = true;
     steam-hardware.enable = true;
