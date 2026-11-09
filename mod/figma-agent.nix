@@ -4,12 +4,26 @@
 
 { pkgs, ... }:
 
+let
+  p = pkgs.extend (
+    final: prev: {
+      figma-agent = prev.figma-agent.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ final.pkg-config ];
+        buildInputs = (old.buildInputs or [ ]) ++ [ final.zstd ];
+      });
+    }
+  );
+in
 {
-  home.packages = with pkgs; [ figma-agent ];
+  home.packages = [
+    p.figma-agent
+  ];
+
   systemd.user.services.figma-agent = {
     Unit.Description = "Figma Font Agent";
+
     Service = {
-      ExecStart = "${pkgs.figma-agent}/bin/figma-agent";
+      ExecStart = "${p.figma-agent}/bin/figma-agent";
       Restart = "on-failure";
     };
 
