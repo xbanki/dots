@@ -13,7 +13,6 @@
 
     wireplumber.enable = true;
     pulse.enable = true;
-    jack.enable = true;
     enable = true;
   };
 }
