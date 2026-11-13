@@ -6,6 +6,7 @@
 
 {
   programs.ghostty = {
+    settings.theme = "dark:Nightfox,light:Dayfox";
     enableZshIntegration = true;
     systemd.enable = true;
     enable = true;
