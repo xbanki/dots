@@ -72,6 +72,7 @@ nixpkgs.lib.nixosSystem {
         "hyprland.nix"
         "pipewire.nix"
         "flatpak.nix"
+        "geoclue.nix"
         "greetd.nix"
         "gpg.nix"
       ])
